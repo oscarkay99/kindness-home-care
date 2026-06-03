@@ -15,10 +15,11 @@ body {
 
 /* ── Hero Backgrounds ── */
 .hero-home {
-  background-image: url('https://images.pexels.com/photos/16364308/pexels-photo-16364308.jpeg?auto=compress&cs=tinysrgb&w=1920&q=85');
+  background-image: url('https://images.pexels.com/photos/7551654/pexels-photo-7551654.jpeg?cs=srgb&w=2560&q=100');
   background-size: cover;
-  background-position: center;
+  background-position: 75% center;
   background-repeat: no-repeat;
+  image-rendering: crisp-edges;
 }
 
 .hero-page {
