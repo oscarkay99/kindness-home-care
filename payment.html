@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment | Kindness Home Care Services LLC</title>
+  <meta name="description" content="Learn about our private pay home care pricing, payment methods, and billing process.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary:    { 50:'#FDFCE8',100:'#FCF6C8',200:'#F7EC90',300:'#EEDB50',400:'#E0C424',500:'#C4A410',600:'#A08608',700:'#7C6606',800:'#5A4A04',900:'#3A3002',950:'#241E01' },
+            secondary:  { 50:'#F0FAFA',100:'#DCEFEC',200:'#B4E0D8',300:'#7FCFC4',400:'#40B8AC',500:'#1A9D92',600:'#0F7E76',700:'#0A6058',800:'#08443E',900:'#062C2A',950:'#041A18' },
+            background: { 50:'#FAF9F7',100:'#F3F1EC',200:'#E6E2D8',300:'#D3CDB9',400:'#B8B09B',500:'#9A927C',600:'#786E5E',700:'#5A5246',800:'#3C3730',900:'#262219',950:'#14120E' },
+            accent:     { 100:'#E0F4DE',200:'#BAEBB8',300:'#82D87C',400:'#4ABE48',500:'#1EA024',600:'#148018',700:'#0C6012',800:'#08440C',900:'#062C08',950:'#041C04' },
+            foreground: { 500:'#5E6A64',600:'#4A5450',700:'#383E3C',800:'#262A28',950:'#141A18' },
+          },
+          fontFamily: { heading: ['"Fraunces"','Georgia','serif'] },
+        },
+      },
+    }
+  </script>
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="site-header" class="fixed top-0 left-0 right-0 z-50 bg-transparent">
+  <div class="w-full px-6 md:px-10 lg:px-14">
+    <div class="flex items-center justify-between h-20">
+      <a href="index.html" class="flex items-center group">
+        <img src="assets/logo.png" alt="Kindness Home Care Services LLC" class="h-12 w-auto">
+      </a>
+      <nav class="hidden lg:flex items-center gap-1">
+        <a href="index.html"    class="nav-link px-4 py-2 text-sm font-medium rounded-full text-background-50/90 hover:text-background-50 hover:bg-background-50/10">Home</a>
+        <a href="services.html" class="nav-link px-4 py-2 text-sm font-medium rounded-full text-background-50/90 hover:text-background-50 hover:bg-background-50/10">Services</a>
+        <a href="apply.html"    class="nav-link px-4 py-2 text-sm font-medium rounded-full text-background-50/90 hover:text-background-50 hover:bg-background-50/10">Apply</a>
+        <a href="payment.html"  class="nav-link active px-4 py-2 text-sm font-medium rounded-full text-background-50 bg-background-50/20">Payment</a>
+        <a href="about.html"    class="nav-link px-4 py-2 text-sm font-medium rounded-full text-background-50/90 hover:text-background-50 hover:bg-background-50/10">About</a>
+        <a href="contact.html"  class="nav-link px-4 py-2 text-sm font-medium rounded-full text-background-50/90 hover:text-background-50 hover:bg-background-50/10">Contact</a>
+      </nav>
+      <div class="hidden lg:flex items-center gap-3">
+        <a href="tel:+16145550199" class="header-contact flex items-center gap-2 text-sm font-medium text-background-50/80 hover:text-background-50 transition-colors">
+          <i class="fa-solid fa-phone text-xs"></i> (614) 555-0199
+        </a>
+        <a href="apply.html" class="px-5 py-2.5 rounded-full bg-primary-500 hover:bg-primary-600 text-white text-sm font-semibold transition-colors">Request Care</a>
+      </div>
+      <button id="menu-toggle" aria-expanded="false" class="lg:hidden w-10 h-10 flex items-center justify-center rounded-full text-background-50 hover:bg-background-50/10 transition-colors">
+        <i class="fa-solid fa-bars text-lg"></i>
+      </button>
+    </div>
+  </div>
+  <div id="mobile-menu" class="mobile-menu lg:hidden bg-background-50 border-t border-background-200 shadow-lg">
+    <nav class="px-6 py-4 flex flex-col gap-1">
+      <a href="index.html"    class="px-4 py-3 text-sm font-medium rounded-xl text-foreground-700 hover:bg-background-100">Home</a>
+      <a href="services.html" class="px-4 py-3 text-sm font-medium rounded-xl text-foreground-700 hover:bg-background-100">Services</a>
+      <a href="apply.html"    class="px-4 py-3 text-sm font-medium rounded-xl text-foreground-700 hover:bg-background-100">Apply</a>
+      <a href="payment.html"  class="px-4 py-3 text-sm font-medium rounded-xl text-foreground-950 bg-primary-50">Payment</a>
+      <a href="about.html"    class="px-4 py-3 text-sm font-medium rounded-xl text-foreground-700 hover:bg-background-100">About</a>
+      <a href="contact.html"  class="px-4 py-3 text-sm font-medium rounded-xl text-foreground-700 hover:bg-background-100">Contact</a>
+      <div class="mt-2 pt-2 border-t border-background-200 flex flex-col gap-2">
+        <a href="tel:+16145550199" class="flex items-center justify-center gap-2 px-5 py-3 text-sm font-medium text-foreground-700 rounded-xl border border-background-200 hover:bg-background-100 transition-colors">
+          <i class="fa-solid fa-phone text-xs text-primary-600"></i> (614) 555-0199
+        </a>
+        <a href="apply.html" class="block text-center px-5 py-3 rounded-full bg-primary-500 hover:bg-primary-600 text-white text-sm font-semibold transition-colors">Request Care</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- PAGE HERO -->
+<section class="pt-32 md:pt-40 pb-16 md:pb-24 px-6 md:px-10 lg:px-14 bg-secondary-950 text-background-50">
+  <div class="max-w-7xl mx-auto">
+    <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-background-50/15 border border-background-50/25 text-background-50 text-[11px] font-semibold uppercase tracking-[0.18em] backdrop-blur-sm">Private pay</span>
+    <h1 class="mt-6 font-heading text-4xl md:text-5xl lg:text-7xl font-light leading-[1.05] max-w-4xl">
+      Pay for care services.
+    </h1>
+    <p class="mt-6 max-w-2xl text-background-200 text-base md:text-lg leading-relaxed">
+      Kindness Home Care operates on a private pay model. Choose the payment method that works best for your family.
+    </p>
+  </div>
+</section>
+
+
+<!-- PRICING TIERS -->
+<section class="bg-background-50 px-6 md:px-10 lg:px-14 py-20 md:py-28">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center max-w-2xl mx-auto mb-14">
+      <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary-100 text-primary-700 text-[11px] font-semibold uppercase tracking-[0.18em]">Service rates</span>
+      <h2 class="mt-5 font-heading text-4xl md:text-5xl font-light text-foreground-950 leading-tight">
+        Rates that reflect the care you receive.
+      </h2>
+      <p class="mt-4 text-base text-foreground-700 leading-relaxed">
+        Our rates are competitive within the Columbus metro area. Final pricing is confirmed during your care consultation.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+
+      <!-- Hourly -->
+      <div class="rounded-2xl border border-background-200 bg-background-100 p-7 md:p-8">
+        <span class="w-12 h-12 flex items-center justify-center rounded-full bg-primary-100 text-primary-700 mb-5">
+          <i class="fa-solid fa-clock text-xl"></i>
+        </span>
+        <h3 class="font-heading text-2xl font-medium text-foreground-950">Hourly Care</h3>
+        <p class="mt-2 text-sm text-foreground-600">Ideal for a few hours of support each day or week.</p>
+        <div class="mt-6 border-t border-background-200 pt-6">
+          <p class="text-4xl font-heading font-light text-foreground-950">$25–$35<span class="text-lg text-foreground-600">/hr</span></p>
+          <p class="text-xs text-foreground-600 mt-1">Rate varies by service type and caregiver certification</p>
+        </div>
+        <ul class="mt-6 space-y-2.5">
+          <li class="flex items-start gap-2 text-sm text-foreground-700"><i class="fa-solid fa-check text-primary-500 mt-0.5 shrink-0"></i> Minimum 4-hour visits</li>
+          <li class="flex items-start gap-2 text-sm text-foreground-700"><i class="fa-solid fa-check text-primary-500 mt-0.5 shrink-0"></i> Companionship, errands, cooking</li>
+          <li class="flex items-start gap-2 text-sm text-foreground-700"><i class="fa-solid fa-check text-primary-500 mt-0.5 shrink-0"></i> Daily living assistance</li>
+          <li class="flex items-start gap-2 text-sm text-foreground-700"><i class="fa-solid fa-check text-primary-500 mt-0.5 shrink-0"></i> Flexible scheduling</li>
+        </ul>
+        <a href="apply.html" class="mt-8 block text-center px-6 py-3.5 rounded-full border border-primary-500 text-primary-700 hover:bg-primary-50 text-sm font-semibold transition-colors">Get Started</a>
+      </div>
+
+      <!-- Daily / Full-Day -->
+      <div class="rounded-2xl border border-primary-300 bg-primary-500 text-white p-7 md:p-8 relative">
+        <span class="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-accent-500 text-white text-xs font-semibold">Most Popular</span>
+        <span class="w-12 h-12 flex items-center justify-center rounded-full bg-white/20 text-white mb-5">
+          <i class="fa-solid fa-sun text-xl"></i>
+        </span>
+        <h3 class="font-heading text-2xl font-medium">Daily / Full-Day Care</h3>
+        <p class="mt-2 text-sm text-white/80">Full-day support for clients who need consistent daytime presence.</p>
+        <div class="mt-6 border-t border-white/20 pt-6">
+          <p class="text-4xl font-heading font-light">$180–$260<span class="text-lg text-white/80">/day</span></p>
+          <p class="text-xs text-white/70 mt-1">8–12 hour shifts, rate varies by service level</p>
+        </div>
+        <ul class="mt-6 space-y-2.5">
+          <li class="flex items-start gap-2 text-sm text-white/90"><i class="fa-solid fa-check text-white mt-0.5 shrink-0"></i> 8–12 hours of on-site care</li>
+          <li class="flex items-start gap-2 text-sm text-white/90"><i class="fa-solid fa-check text-white mt-0.5 shrink-0"></i> All hourly services included</li>
+          <li class="flex items-start gap-2 text-sm text-white/90"><i class="fa-solid fa-check text-white mt-0.5 shrink-0"></i> Meal preparation included</li>
+          <li class="flex items-start gap-2 text-sm text-white/90"><i class="fa-solid fa-check text-white mt-0.5 shrink-0"></i> Grooming assistance included</li>
+          <li class="flex items-start gap-2 text-sm text-white/90"><i class="fa-solid fa-check text-white mt-0.5 shrink-0"></i> Weekly billing</li>
+        </ul>
+        <a href="apply.html" class="mt-8 block text-center px-6 py-3.5 rounded-full bg-white text-primary-700 hover:bg-background-50 text-sm font-semibold transition-colors">Get Started</a>
+      </div>
+
+      <!-- Live-In -->
+      <div class="rounded-2xl border border-background-200 bg-background-100 p-7 md:p-8">
+        <span class="w-12 h-12 flex items-center justify-center rounded-full bg-secondary-100 text-secondary-700 mb-5">
+          <i class="fa-solid fa-moon text-xl"></i>
+        </span>
+        <h3 class="font-heading text-2xl font-medium text-foreground-950">24-Hour Live-In</h3>
+        <p class="mt-2 text-sm text-foreground-600">A caregiver lives in the home — continuous round-the-clock coverage.</p>
+        <div class="mt-6 border-t border-background-200 pt-6">
+          <p class="text-4xl font-heading font-light text-foreground-950">Custom<span class="text-lg text-foreground-600"> quote</span></p>
+          <p class="text-xs text-foreground-600 mt-1">Based on care needs, schedule, and certifications required</p>
+        </div>
+        <ul class="mt-6 space-y-2.5">
+          <li class="flex items-start gap-2 text-sm text-foreground-700"><i class="fa-solid fa-check text-primary-500 mt-0.5 shrink-0"></i> 24/7 on-site caregiver</li>
+          <li class="flex items-start gap-2 text-sm text-foreground-700"><i class="fa-solid fa-check text-primary-500 mt-0.5 shrink-0"></i> All services included</li>
+          <li class="flex items-start gap-2 text-sm text-foreground-700"><i class="fa-solid fa-check text-primary-500 mt-0.5 shrink-0"></i> Overnight supervision</li>
+          <li class="flex items-start gap-2 text-sm text-foreground-700"><i class="fa-solid fa-check text-primary-500 mt-0.5 shrink-0"></i> Emergency response</li>
+          <li class="flex items-start gap-2 text-sm text-foreground-700"><i class="fa-solid fa-check text-primary-500 mt-0.5 shrink-0"></i> Family updates included</li>
+        </ul>
+        <a href="contact.html" class="mt-8 block text-center px-6 py-3.5 rounded-full border border-secondary-500 text-secondary-700 hover:bg-secondary-50 text-sm font-semibold transition-colors">Request a Quote</a>
+      </div>
+
+    </div>
+
+    <p class="mt-8 text-center text-sm text-foreground-600 max-w-2xl mx-auto">
+      STNA-certified services may be priced slightly higher due to the specialized credentials involved. All pricing is confirmed in writing before care begins.
+    </p>
+  </div>
+</section>
+
+<!-- PAYMENT METHODS -->
+<section class="bg-background-50 px-6 md:px-10 lg:px-14 py-16 md:py-24">
+  <div class="max-w-7xl mx-auto">
+
+    <div class="mb-12 rounded-2xl bg-background-100 border border-background-200/70 px-6 md:px-8 py-6 flex items-start gap-4">
+      <span class="w-10 h-10 flex items-center justify-center rounded-full bg-primary-100 text-primary-700 shrink-0 mt-0.5">
+        <i class="fa-solid fa-circle-question text-lg"></i>
+      </span>
+      <div>
+        <p class="text-sm md:text-base text-foreground-800 leading-relaxed">
+          <strong class="font-semibold">Private pay means</strong> clients pay directly out of pocket for care services. We do not currently accept insurance, Medicaid, or Medicare. We can discuss payment plans and scheduling flexibility during your intake.
+        </p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+      <!-- Card -->
+      <article class="rounded-2xl border border-background-200/70 overflow-hidden bg-primary-50">
+        <div class="p-7 md:p-8">
+          <span class="w-14 h-14 flex items-center justify-center rounded-full bg-primary-500 text-white">
+            <i class="fa-solid fa-credit-card text-2xl"></i>
+          </span>
+          <h3 class="mt-6 font-heading text-2xl font-medium text-foreground-950">Pay by Card</h3>
+          <p class="mt-3 text-sm text-foreground-700 leading-relaxed">Secure credit or debit card payment for your care services. We accept Visa, Mastercard, Discover, and American Express.</p>
+          <div class="mt-6 rounded-xl bg-background-50 border border-background-200/70 px-5 py-4">
+            <p class="text-sm text-foreground-700"><strong class="text-foreground-950">Contact our office for secure card processing</strong></p>
+          </div>
+        </div>
+      </article>
+
+      <!-- Zelle -->
+      <article class="rounded-2xl border border-background-200/70 overflow-hidden bg-secondary-100">
+        <div class="p-7 md:p-8">
+          <span class="w-14 h-14 flex items-center justify-center rounded-full bg-secondary-500 text-white">
+            <i class="fa-solid fa-arrow-right-arrow-left text-2xl"></i>
+          </span>
+          <h3 class="mt-6 font-heading text-2xl font-medium text-foreground-950">Zelle</h3>
+          <p class="mt-3 text-sm text-foreground-700 leading-relaxed">Send payment directly from your bank app to our business account. No fees, instant delivery.</p>
+          <div class="mt-6 rounded-xl bg-background-50 border border-background-200/70 px-5 py-4">
+            <p class="text-sm text-foreground-700"><strong class="text-foreground-950">Send to: care@kindnesshomecare.com</strong></p>
+          </div>
+        </div>
+      </article>
+
+      <!-- Cash App -->
+      <article class="rounded-2xl border border-background-200/70 overflow-hidden bg-accent-100">
+        <div class="p-7 md:p-8">
+          <span class="w-14 h-14 flex items-center justify-center rounded-full bg-accent-500 text-white">
+            <i class="fa-solid fa-mobile-screen text-2xl"></i>
+          </span>
+          <h3 class="mt-6 font-heading text-2xl font-medium text-foreground-950">Cash App</h3>
+          <p class="mt-3 text-sm text-foreground-700 leading-relaxed">Quick and easy payment through Cash App. Perfect for families who prefer mobile-first payment.</p>
+          <div class="mt-6 rounded-xl bg-background-50 border border-background-200/70 px-5 py-4">
+            <p class="text-sm text-foreground-700"><strong class="text-foreground-950">Send to: $KindnessHomeCare</strong></p>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="mt-14 rounded-2xl border border-background-200/70 bg-background-50 px-6 md:px-8 py-6 flex flex-col md:flex-row items-start md:items-center gap-4 justify-between">
+      <div class="flex items-center gap-4">
+        <span class="w-10 h-10 flex items-center justify-center rounded-full bg-primary-100 text-primary-700 shrink-0">
+          <i class="fa-solid fa-file-lines text-lg"></i>
+        </span>
+        <p class="text-sm text-foreground-800 leading-relaxed">
+          <strong class="font-semibold">Need an invoice?</strong> We can send a detailed invoice for your records or reimbursement.
+        </p>
+      </div>
+      <a href="mailto:care@kindnesshomecare.com?subject=Invoice Request" class="px-5 py-3 rounded-full bg-primary-500 hover:bg-primary-600 text-white text-sm font-semibold transition-colors whitespace-nowrap">
+        Request an invoice
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="bg-background-50 px-6 md:px-10 lg:px-14 py-20 md:py-28">
+  <div class="max-w-4xl mx-auto">
+    <div class="mb-12">
+      <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent-100 text-accent-900 text-[11px] font-semibold uppercase tracking-[0.18em]">FAQ</span>
+      <h2 class="mt-5 font-heading text-4xl md:text-5xl font-light text-foreground-950 leading-tight">
+        Billing questions, answered.
+      </h2>
+    </div>
+
+    <div class="flex flex-col divide-y divide-background-200">
+
+      <div class="faq-item py-5">
+        <button class="faq-trigger w-full flex items-center justify-between text-left gap-4">
+          <span class="text-base font-semibold text-foreground-950">When do I receive my invoice?</span>
+          <span class="faq-icon w-8 h-8 flex items-center justify-center rounded-full bg-background-100 text-foreground-700 shrink-0 text-xl">+</span>
+        </button>
+        <div class="faq-content">
+          <p class="pt-4 pb-2 text-sm text-foreground-700 leading-relaxed">Invoices are issued weekly or bi-weekly, depending on your preference set up during your care consultation. Invoices are emailed and can also be mailed on request.</p>
+        </div>
+      </div>
+
+      <div class="faq-item py-5">
+        <button class="faq-trigger w-full flex items-center justify-between text-left gap-4">
+          <span class="text-base font-semibold text-foreground-950">Is there a minimum commitment or contract?</span>
+          <span class="faq-icon w-8 h-8 flex items-center justify-center rounded-full bg-background-100 text-foreground-700 shrink-0 text-xl">+</span>
+        </button>
+        <div class="faq-content">
+          <p class="pt-4 pb-2 text-sm text-foreground-700 leading-relaxed">We do not require long-term contracts. We ask for a minimum of 4 hours per visit and a courtesy notice of at least 48 hours for schedule changes or cancellations.</p>
+        </div>
+      </div>
+
+      <div class="faq-item py-5">
+        <button class="faq-trigger w-full flex items-center justify-between text-left gap-4">
+          <span class="text-base font-semibold text-foreground-950">What happens if I need to cancel a visit?</span>
+          <span class="faq-icon w-8 h-8 flex items-center justify-center rounded-full bg-background-100 text-foreground-700 shrink-0 text-xl">+</span>
+        </button>
+        <div class="faq-content">
+          <p class="pt-4 pb-2 text-sm text-foreground-700 leading-relaxed">We ask for at least 24 hours' notice for cancellations when possible. Visits cancelled with less than 24 hours notice may be subject to a partial cancellation fee, as detailed in your service agreement.</p>
+        </div>
+      </div>
+
+      <div class="faq-item py-5">
+        <button class="faq-trigger w-full flex items-center justify-between text-left gap-4">
+          <span class="text-base font-semibold text-foreground-950">Can I use my HSA or FSA to pay?</span>
+          <span class="faq-icon w-8 h-8 flex items-center justify-center rounded-full bg-background-100 text-foreground-700 shrink-0 text-xl">+</span>
+        </button>
+        <div class="faq-content">
+          <p class="pt-4 pb-2 text-sm text-foreground-700 leading-relaxed">In many cases, home care services can be paid for using HSA or FSA funds, particularly when the care is related to a qualifying medical condition. We recommend consulting your HSA/FSA administrator to confirm eligibility. We provide itemized receipts to support your claims.</p>
+        </div>
+      </div>
+
+      <div class="faq-item py-5">
+        <button class="faq-trigger w-full flex items-center justify-between text-left gap-4">
+          <span class="text-base font-semibold text-foreground-950">Do you offer a payment plan?</span>
+          <span class="faq-icon w-8 h-8 flex items-center justify-center rounded-full bg-background-100 text-foreground-700 shrink-0 text-xl">+</span>
+        </button>
+        <div class="faq-content">
+          <p class="pt-4 pb-2 text-sm text-foreground-700 leading-relaxed">We understand that care costs can be significant. We're happy to work with families on payment arrangements on a case-by-case basis. Please contact our office to discuss your situation.</p>
+        </div>
+      </div>
+
+      <div class="faq-item py-5">
+        <button class="faq-trigger w-full flex items-center justify-between text-left gap-4">
+          <span class="text-base font-semibold text-foreground-950">Are caregivers employees or contractors?</span>
+          <span class="faq-icon w-8 h-8 flex items-center justify-center rounded-full bg-background-100 text-foreground-700 shrink-0 text-xl">+</span>
+        </button>
+        <div class="faq-content">
+          <p class="pt-4 pb-2 text-sm text-foreground-700 leading-relaxed">Our caregivers are employees of Kindness Home Care Services LLC. This means we handle payroll taxes, workers' compensation insurance, background checks, and ongoing oversight — you don't have any employer liability or administrative burden.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="mt-12 text-center">
+      <p class="text-base text-foreground-700">Still have billing questions?</p>
+      <a href="contact.html" class="mt-4 inline-flex items-center gap-2 px-7 py-4 rounded-full bg-primary-500 hover:bg-primary-600 text-white text-sm font-semibold transition-colors">
+        Contact Our Office <i class="fa-solid fa-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- PAYMENT CTA -->
+<section class="px-4 md:px-6 pb-8 bg-background-50">
+  <div class="relative overflow-hidden rounded-3xl bg-secondary-950 text-background-50">
+    <div class="relative z-10 px-8 md:px-14 lg:px-20 py-14 md:py-20 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
+      <div>
+        <h2 class="font-heading text-3xl md:text-4xl font-light leading-tight">Questions about payment?</h2>
+        <p class="mt-3 max-w-lg text-background-200 text-base leading-relaxed">We're happy to walk through payment plans, scheduling, and any questions about the private pay model.</p>
+      </div>
+      <div class="flex flex-col sm:flex-row gap-3">
+        <a href="tel:+16145550199" class="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full bg-background-50 text-foreground-950 hover:bg-background-100 text-sm font-semibold transition-colors whitespace-nowrap">
+          <i class="fa-solid fa-phone"></i> Call (614) 555-0199
+        </a>
+        <a href="contact.html" class="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full bg-background-50/10 hover:bg-background-50/20 border border-background-50/30 text-background-50 text-sm font-semibold transition-colors whitespace-nowrap">
+          <i class="fa-solid fa-envelope"></i> Send a message
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="px-4 md:px-6 pb-6 pt-6 bg-background-50">
+  <div class="rounded-3xl bg-secondary-950 text-background-50 px-6 md:px-12 lg:px-16 py-12 md:py-16">
+    <div class="grid grid-cols-1 lg:grid-cols-[2fr_1fr_1.4fr] gap-10 lg:gap-14">
+      <div>
+        <div class="flex items-center gap-3 mb-5">
+          <img src="assets/logo.png" alt="Kindness Home Care Services LLC" class="h-10 w-auto">
+          <span class="font-heading text-lg font-semibold">Kindness Home Care</span>
+        </div>
+        <h3 class="font-heading text-3xl font-light leading-tight">Stay close to the kindness.</h3>
+        <p class="mt-4 text-sm text-background-300 max-w-md leading-relaxed">Monthly notes on caring for aging loved ones at home — gentle reminders, helpful resources, and stories from our families.</p>
+        <form id="newsletter-form" class="mt-8">
+          <div class="flex items-center gap-3 border-b border-background-700 pb-2">
+            <input required type="email" placeholder="your@email.com" class="flex-1 bg-transparent text-sm placeholder:text-background-500 text-background-50 focus:outline-none py-2">
+            <button type="submit" class="px-5 py-2.5 rounded-full bg-background-50 text-foreground-950 text-sm font-semibold flex items-center gap-2 hover:bg-background-100 transition-colors">Subscribe <i class="fa-solid fa-arrow-right"></i></button>
+          </div>
+          <p id="newsletter-success" class="hidden mt-3 text-sm text-primary-300"><i class="fa-solid fa-circle-check mr-1"></i> Thank you! You've been subscribed.</p>
+        </form>
+        <div class="mt-8 flex flex-wrap gap-2">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-background-50/8 text-background-400 text-[11px]">
+            <i class="fa-solid fa-shield-halved text-primary-400"></i> Liability Insured
+          </span>
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-background-50/8 text-background-400 text-[11px]">
+            <i class="fa-solid fa-certificate text-primary-400"></i> Bonded
+          </span>
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-background-50/8 text-background-400 text-[11px]">
+            <i class="fa-solid fa-user-shield text-primary-400"></i> Workers' Comp
+          </span>
+        </div>
+      </div>
+      <div>
+        <h4 class="text-xs uppercase tracking-[0.18em] text-background-400 font-semibold">Explore</h4>
+        <ul class="mt-5 space-y-3">
+          <li><a href="index.html"    class="text-sm text-background-100 hover:text-background-50 underline-offset-4 hover:underline">Home</a></li>
+          <li><a href="services.html" class="text-sm text-background-100 hover:text-background-50 underline-offset-4 hover:underline">Services</a></li>
+          <li><a href="apply.html"    class="text-sm text-background-100 hover:text-background-50 underline-offset-4 hover:underline">Apply for Care</a></li>
+          <li><a href="payment.html"  class="text-sm text-background-100 hover:text-background-50 underline-offset-4 hover:underline">Payment</a></li>
+          <li><a href="about.html"    class="text-sm text-background-100 hover:text-background-50 underline-offset-4 hover:underline">About Us</a></li>
+          <li><a href="contact.html"  class="text-sm text-background-100 hover:text-background-50 underline-offset-4 hover:underline">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-xs uppercase tracking-[0.18em] text-background-400 font-semibold">Get in touch</h4>
+        <p class="mt-5 text-sm text-background-100"><a href="tel:+16145550199" class="hover:text-background-50">(614) 555-0199</a></p>
+        <p class="mt-2 text-sm text-background-100"><a href="mailto:care@kindnesshomecare.com" class="hover:text-background-50">care@kindnesshomecare.com</a></p>
+        <h4 class="mt-8 text-xs uppercase tracking-[0.18em] text-background-400 font-semibold">Office</h4>
+        <p class="mt-4 text-sm text-background-100 leading-relaxed">1248 Compassion Lane, Suite 200<br>Columbus, OH 43215</p>
+      </div>
+    </div>
+    <div class="mt-10 pt-6 border-t border-background-800 flex flex-col sm:flex-row items-center gap-4 justify-between">
+      <div class="flex items-center gap-5 text-sm">
+        <a href="https://facebook.com/"  target="_blank" rel="noopener noreferrer" class="text-background-200 hover:text-background-50">Facebook</a>
+        <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer" class="text-background-200 hover:text-background-50">Instagram</a>
+        <a href="https://linkedin.com/"  target="_blank" rel="noopener noreferrer" class="text-background-200 hover:text-background-50">LinkedIn</a>
+      </div>
+      <p class="text-xs text-background-400 text-center">© 2026 Kindness Home Care Services LLC. All rights reserved.</p>
+      <div class="flex items-center gap-4 text-xs">
+        <a href="privacy.html" class="text-background-300 hover:text-background-50">Privacy Policy</a>
+        <a href="terms.html"   class="text-background-300 hover:text-background-50">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>

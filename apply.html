@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apply | Kindness Home Care Services LLC</title>
+  <meta name="description" content="Request home care for a loved one, or apply to join the Kindness Home Care team as a caregiver or STNA.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary:    { 50:'#FDFCE8',100:'#FCF6C8',200:'#F7EC90',300:'#EEDB50',400:'#E0C424',500:'#C4A410',600:'#A08608',700:'#7C6606',800:'#5A4A04',900:'#3A3002',950:'#241E01' },
+            secondary:  { 50:'#F0FAFA',100:'#DCEFEC',200:'#B4E0D8',300:'#7FCFC4',400:'#40B8AC',500:'#1A9D92',600:'#0F7E76',700:'#0A6058',800:'#08443E',900:'#062C2A',950:'#041A18' },
+            background: { 50:'#FAF9F7',100:'#F3F1EC',200:'#E6E2D8',300:'#D3CDB9',400:'#B8B09B',500:'#9A927C',600:'#786E5E',700:'#5A5246',800:'#3C3730',900:'#262219',950:'#14120E' },
+            accent:     { 100:'#E0F4DE',200:'#BAEBB8',300:'#82D87C',400:'#4ABE48',500:'#1EA024',600:'#148018',700:'#0C6012',800:'#08440C',900:'#062C08',950:'#041C04' },
+            foreground: { 500:'#5E6A64',600:'#4A5450',700:'#383E3C',800:'#262A28',950:'#141A18' },
+          },
+          fontFamily: { heading: ['"Fraunces"','Georgia','serif'] },
+        },
+      },
+    }
+  </script>
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="site-header" class="fixed top-0 left-0 right-0 z-50 bg-transparent">
+  <div class="w-full px-6 md:px-10 lg:px-14">
+    <div class="flex items-center justify-between h-20">
+      <a href="index.html" class="flex items-center group">
+        <img src="assets/logo.png" alt="Kindness Home Care Services LLC" class="h-12 w-auto">
+      </a>
+      <nav class="hidden lg:flex items-center gap-1">
+        <a href="index.html"    class="nav-link px-4 py-2 text-sm font-medium rounded-full text-background-50/90 hover:text-background-50 hover:bg-background-50/10">Home</a>
+        <a href="services.html" class="nav-link px-4 py-2 text-sm font-medium rounded-full text-background-50/90 hover:text-background-50 hover:bg-background-50/10">Services</a>
+        <a href="apply.html"    class="nav-link active px-4 py-2 text-sm font-medium rounded-full text-background-50 bg-background-50/20">Apply</a>
+        <a href="payment.html"  class="nav-link px-4 py-2 text-sm font-medium rounded-full text-background-50/90 hover:text-background-50 hover:bg-background-50/10">Payment</a>
+        <a href="about.html"    class="nav-link px-4 py-2 text-sm font-medium rounded-full text-background-50/90 hover:text-background-50 hover:bg-background-50/10">About</a>
+        <a href="contact.html"  class="nav-link px-4 py-2 text-sm font-medium rounded-full text-background-50/90 hover:text-background-50 hover:bg-background-50/10">Contact</a>
+      </nav>
+      <div class="hidden lg:flex items-center gap-3">
+        <a href="tel:+16145550199" class="header-contact flex items-center gap-2 text-sm font-medium text-background-50/80 hover:text-background-50 transition-colors">
+          <i class="fa-solid fa-phone text-xs"></i> (614) 555-0199
+        </a>
+        <a href="apply.html" class="px-5 py-2.5 rounded-full bg-primary-500 hover:bg-primary-600 text-white text-sm font-semibold transition-colors">Request Care</a>
+      </div>
+      <button id="menu-toggle" aria-expanded="false" aria-label="Toggle navigation"
+        class="lg:hidden w-10 h-10 flex items-center justify-center rounded-full text-background-50 hover:bg-background-50/10 transition-colors">
+        <i class="fa-solid fa-bars text-lg"></i>
+      </button>
+    </div>
+  </div>
+  <div id="mobile-menu" class="mobile-menu lg:hidden bg-background-50 border-t border-background-200 shadow-lg">
+    <nav class="px-6 py-4 flex flex-col gap-1">
+      <a href="index.html"    class="px-4 py-3 text-sm font-medium rounded-xl text-foreground-700 hover:bg-background-100">Home</a>
+      <a href="services.html" class="px-4 py-3 text-sm font-medium rounded-xl text-foreground-700 hover:bg-background-100">Services</a>
+      <a href="apply.html"    class="px-4 py-3 text-sm font-medium rounded-xl text-foreground-950 bg-primary-50">Apply</a>
+      <a href="payment.html"  class="px-4 py-3 text-sm font-medium rounded-xl text-foreground-700 hover:bg-background-100">Payment</a>
+      <a href="about.html"    class="px-4 py-3 text-sm font-medium rounded-xl text-foreground-700 hover:bg-background-100">About</a>
+      <a href="contact.html"  class="px-4 py-3 text-sm font-medium rounded-xl text-foreground-700 hover:bg-background-100">Contact</a>
+      <div class="mt-2 pt-2 border-t border-background-200 flex flex-col gap-2">
+        <a href="tel:+16145550199" class="flex items-center justify-center gap-2 px-5 py-3 text-sm font-medium text-foreground-700 rounded-xl border border-background-200 hover:bg-background-100 transition-colors">
+          <i class="fa-solid fa-phone text-xs text-primary-600"></i> (614) 555-0199
+        </a>
+        <a href="apply.html" class="block text-center px-5 py-3 rounded-full bg-primary-500 hover:bg-primary-600 text-white text-sm font-semibold transition-colors">Request Care</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- PAGE HERO -->
+<section class="relative w-full min-h-[380px] flex items-end overflow-hidden">
+  <div class="absolute inset-0 hero-page"></div>
+  <div class="absolute inset-0 bg-gradient-to-b from-black/10 to-black/65"></div>
+  <div class="relative z-10 w-full px-6 md:px-10 lg:px-14 pb-14 pt-36">
+    <div class="max-w-5xl">
+      <h1 class="font-heading text-4xl md:text-6xl font-light text-background-50 leading-tight">
+        Kindness starts<br><em>with a conversation.</em>
+      </h1>
+      <p class="mt-5 max-w-2xl text-background-100 text-base md:text-lg leading-relaxed">
+        Whether you're seeking care for a loved one or looking to join our compassionate team, you're in the right place.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- TAB NAVIGATION -->
+<div id="join-team" class="bg-background-100 border-b border-background-200 sticky top-[80px] z-40">
+  <div class="max-w-6xl mx-auto px-6 md:px-10 lg:px-14 py-4 flex gap-3">
+    <button class="tab-btn active" data-tab="panel-care">
+      <i class="fa-solid fa-house-heart mr-2"></i>Request Care for a Loved One
+    </button>
+    <button class="tab-btn" data-tab="panel-join">
+      <i class="fa-solid fa-briefcase mr-2"></i>Join Our Team
+    </button>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     PANEL 1 — REQUEST CARE
+═══════════════════════════════════════════════ -->
+<div id="panel-care" class="tab-panel active bg-background-50 px-6 md:px-10 lg:px-14 py-16 md:py-24">
+  <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-12 lg:gap-16">
+
+    <!-- Form -->
+    <div>
+      <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary-100 text-primary-700 text-[11px] font-semibold uppercase tracking-[0.18em]">Request care</span>
+      <h2 class="mt-5 font-heading text-3xl md:text-4xl font-light text-foreground-950 leading-tight">
+        Tell us about your loved one.
+      </h2>
+      <p class="mt-4 text-base text-foreground-700 leading-relaxed">
+        Complete the form below and we'll reach out within one business day to discuss your loved one's needs and build a care plan together.
+      </p>
+
+      <!-- Success state -->
+      <div id="care-form-success" class="form-success mt-6">
+        <i class="fa-solid fa-circle-check text-primary-600 text-2xl shrink-0"></i>
+        <div>
+          <p class="font-semibold text-primary-800">Thank you! Your request has been received.</p>
+          <p class="text-sm text-primary-700 mt-1">A member of our team will contact you within one business day.</p>
+        </div>
+      </div>
+
+      <form id="care-form" data-form="care-form" class="mt-10 flex flex-col gap-7" novalidate>
+
+        <!-- Section: About the Client -->
+        <div>
+          <h3 class="form-section-title">About the Client</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div class="form-group">
+              <label class="form-label">Client's Full Name <span class="required">*</span></label>
+              <input type="text" class="form-field" placeholder="Jane Smith" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Client's Date of Birth <span class="required">*</span></label>
+              <input type="date" class="form-field" required>
+            </div>
+            <div class="form-group md:col-span-2">
+              <label class="form-label">Client's Home Address <span class="required">*</span></label>
+              <input type="text" class="form-field" placeholder="123 Main Street" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">City <span class="required">*</span></label>
+              <input type="text" class="form-field" placeholder="Columbus" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">ZIP Code <span class="required">*</span></label>
+              <input type="text" class="form-field" placeholder="43215" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Client's Living Situation <span class="required">*</span></label>
+              <select class="form-field" required>
+                <option value="" disabled selected>Select one</option>
+                <option>Lives alone</option>
+                <option>Lives with family member(s)</option>
+                <option>Lives with spouse/partner</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Primary Language</label>
+              <input type="text" class="form-field" placeholder="English">
+            </div>
+          </div>
+        </div>
+
+        <!-- Section: Care Needs -->
+        <div>
+          <h3 class="form-section-title">Care Needs</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div class="form-group md:col-span-2">
+              <label class="form-label">Services Needed <span class="required">*</span> <span class="text-foreground-600 font-normal">(select all that apply)</span></label>
+              <div class="mt-2 grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                <label class="check-label"><input type="checkbox"> 24-Hour Live-In Care</label>
+                <label class="check-label"><input type="checkbox"> Companionship</label>
+                <label class="check-label"><input type="checkbox"> Errands &amp; Daily Help</label>
+                <label class="check-label"><input type="checkbox"> Cooking &amp; Grooming</label>
+                <label class="check-label"><input type="checkbox"> STNA Care Support</label>
+                <label class="check-label"><input type="checkbox"> Daily Living Assistance</label>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Estimated Hours of Care Per Week</label>
+              <select class="form-field">
+                <option value="" disabled selected>Select range</option>
+                <option>Less than 10 hours</option>
+                <option>10–20 hours</option>
+                <option>20–40 hours</option>
+                <option>Full-time (40+ hours)</option>
+                <option>24/7 Live-In</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Desired Care Start Date</label>
+              <input type="date" class="form-field">
+            </div>
+            <div class="form-group md:col-span-2">
+              <label class="form-label">Medical Conditions or Special Needs <span class="text-foreground-600 font-normal">(optional — helps us match the right caregiver)</span></label>
+              <textarea class="form-field" placeholder="e.g., dementia, diabetes, limited mobility, recent surgery…"></textarea>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Primary Physician / Doctor</label>
+              <input type="text" class="form-field" placeholder="Dr. Name, Practice">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Physician Phone</label>
+              <input type="tel" class="form-field" placeholder="(614) 000-0000">
+            </div>
+          </div>
+        </div>
+
+        <!-- Section: Your Contact Info -->
+        <div>
+          <h3 class="form-section-title">Your Contact Information</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div class="form-group">
+              <label class="form-label">Your Full Name <span class="required">*</span></label>
+              <input type="text" class="form-field" placeholder="Your name" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Your Relationship to Client <span class="required">*</span></label>
+              <select class="form-field" required>
+                <option value="" disabled selected>Select</option>
+                <option>Son / Daughter</option>
+                <option>Spouse / Partner</option>
+                <option>Sibling</option>
+                <option>Parent</option>
+                <option>Friend</option>
+                <option>Legal Guardian</option>
+                <option>The client (self)</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Your Phone <span class="required">*</span></label>
+              <input type="tel" class="form-field" placeholder="(614) 000-0000" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Your Email <span class="required">*</span></label>
+              <input type="email" class="form-field" placeholder="you@email.com" required>
+            </div>
+            <div class="form-group md:col-span-2">
+              <label class="form-label">Best Time to Reach You</label>
+              <select class="form-field">
+                <option value="" disabled selected>Select</option>
+                <option>Morning (8 AM – 12 PM)</option>
+                <option>Afternoon (12 PM – 5 PM)</option>
+                <option>Evening (5 PM – 8 PM)</option>
+                <option>Any time</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section: Additional -->
+        <div>
+          <h3 class="form-section-title">Additional Notes</h3>
+          <div class="form-group">
+            <label class="form-label">How did you hear about us?</label>
+            <select class="form-field">
+              <option value="" disabled selected>Select one</option>
+              <option>Google / Internet search</option>
+              <option>Referred by a friend or family</option>
+              <option>Hospital / Healthcare provider</option>
+              <option>Social media</option>
+              <option>Flyer / Mailer</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group mt-5">
+            <label class="form-label">Anything else we should know?</label>
+            <textarea class="form-field" placeholder="Additional context, urgent timing, specific caregiver preferences…"></textarea>
+          </div>
+        </div>
+
+        <div class="pt-2">
+          <button type="submit"
+            class="w-full md:w-auto px-10 py-4 rounded-full bg-primary-500 hover:bg-primary-600 text-white text-sm font-semibold transition-colors flex items-center justify-center gap-2">
+            Submit Care Request <i class="fa-solid fa-arrow-right"></i>
+          </button>
+          <p class="mt-4 text-xs text-foreground-600 leading-relaxed">
+            By submitting this form, you agree to be contacted by Kindness Home Care Services LLC. We respect your privacy — see our <a href="privacy.html" class="underline text-primary-700">Privacy Policy</a>.
+          </p>
+        </div>
+
+      </form>
+    </div>
+
+    <!-- Sidebar -->
+    <aside class="space-y-6">
+      <div class="rounded-2xl bg-primary-50 border border-primary-200 p-6">
+        <span class="w-10 h-10 flex items-center justify-center rounded-full bg-primary-500 text-white mb-4">
+          <i class="fa-solid fa-clock"></i>
+        </span>
+        <h4 class="font-heading text-lg font-medium text-foreground-950">We respond fast.</h4>
+        <p class="mt-2 text-sm text-foreground-700 leading-relaxed">We contact every care request within <strong>one business day</strong>. For urgent needs, call us directly.</p>
+        <a href="tel:+16145550199" class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-primary-700">
+          <i class="fa-solid fa-phone"></i> (614) 555-0199
+        </a>
+      </div>
+      <div class="rounded-2xl bg-background-100 border border-background-200 p-6">
+        <span class="w-10 h-10 flex items-center justify-center rounded-full bg-secondary-500 text-white mb-4">
+          <i class="fa-solid fa-shield-halved"></i>
+        </span>
+        <h4 class="font-heading text-lg font-medium text-foreground-950">Insured &amp; Bonded</h4>
+        <p class="mt-2 text-sm text-foreground-700 leading-relaxed">All caregivers are background-checked, insured, and bonded. Your loved one's safety is our foundation.</p>
+      </div>
+      <div class="rounded-2xl bg-background-100 border border-background-200 p-6">
+        <span class="w-10 h-10 flex items-center justify-center rounded-full bg-accent-500 text-white mb-4">
+          <i class="fa-solid fa-credit-card"></i>
+        </span>
+        <h4 class="font-heading text-lg font-medium text-foreground-950">Private Pay Only</h4>
+        <p class="mt-2 text-sm text-foreground-700 leading-relaxed">We currently serve clients through our private pay model. See our <a href="payment.html" class="underline text-primary-700">payment options</a> for details.</p>
+      </div>
+    </aside>
+
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════
+     PANEL 2 — JOIN OUR TEAM
+═══════════════════════════════════════════════ -->
+<div id="panel-join" class="tab-panel bg-background-50 px-6 md:px-10 lg:px-14 py-16 md:py-24">
+  <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-12 lg:gap-16">
+
+    <!-- Form -->
+    <div>
+      <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent-100 text-accent-800 text-[11px] font-semibold uppercase tracking-[0.18em]">Caregiver application</span>
+      <h2 class="mt-5 font-heading text-3xl md:text-4xl font-light text-foreground-950 leading-tight">
+        Join a team rooted in <em class="text-primary-600">kindness.</em>
+      </h2>
+      <p class="mt-4 text-base text-foreground-700 leading-relaxed">
+        We're looking for compassionate, reliable individuals who take pride in the care they give. If that sounds like you, we'd love to hear from you.
+      </p>
+
+      <!-- Success state -->
+      <div id="join-form-success" class="form-success mt-6">
+        <i class="fa-solid fa-circle-check text-primary-600 text-2xl shrink-0"></i>
+        <div>
+          <p class="font-semibold text-primary-800">Application received — thank you!</p>
+          <p class="text-sm text-primary-700 mt-1">We review every application carefully and will reach out within 3–5 business days.</p>
+        </div>
+      </div>
+
+      <form id="join-form" data-form="join-form" class="mt-10 flex flex-col gap-8" novalidate>
+
+        <!-- ── Section 1: Personal Information ── -->
+        <div>
+          <h3 class="form-section-title">1. Personal Information</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div class="form-group">
+              <label class="form-label">First Name <span class="required">*</span></label>
+              <input type="text" class="form-field" placeholder="Jane" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Last Name <span class="required">*</span></label>
+              <input type="text" class="form-field" placeholder="Smith" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Date of Birth <span class="required">*</span></label>
+              <input type="date" class="form-field" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Phone Number <span class="required">*</span></label>
+              <input type="tel" class="form-field" placeholder="(614) 000-0000" required>
+            </div>
+            <div class="form-group md:col-span-2">
+              <label class="form-label">Email Address <span class="required">*</span></label>
+              <input type="email" class="form-field" placeholder="you@email.com" required>
+            </div>
+            <div class="form-group md:col-span-2">
+              <label class="form-label">Street Address <span class="required">*</span></label>
+              <input type="text" class="form-field" placeholder="123 Main Street" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">City <span class="required">*</span></label>
+              <input type="text" class="form-field" placeholder="Columbus" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">ZIP Code <span class="required">*</span></label>
+              <input type="text" class="form-field" placeholder="43215" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Emergency Contact Name <span class="required">*</span></label>
+              <input type="text" class="form-field" placeholder="Full name" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Emergency Contact Phone <span class="required">*</span></label>
+              <input type="tel" class="form-field" placeholder="(614) 000-0000" required>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── Section 2: Position & Availability ── -->
+        <div>
+          <h3 class="form-section-title">2. Position &amp; Availability</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div class="form-group">
+              <label class="form-label">Position of Interest <span class="required">*</span></label>
+              <select class="form-field" required>
+                <option value="" disabled selected>Select a position</option>
+                <option>Caregiver / Home Health Aide</option>
+                <option>STNA (State Tested Nursing Assistant)</option>
+                <option>Companion Care Aide</option>
+                <option>Live-In Caregiver</option>
+                <option>Administrative / Office Support</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Employment Type <span class="required">*</span></label>
+              <select class="form-field" required>
+                <option value="" disabled selected>Select type</option>
+                <option>Full-time (40 hrs/week)</option>
+                <option>Part-time (under 30 hrs/week)</option>
+                <option>Per Diem / As Needed</option>
+                <option>Live-In</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Desired Weekly Hours</label>
+              <select class="form-field">
+                <option value="" disabled selected>Select range</option>
+                <option>Under 10 hours</option>
+                <option>10–20 hours</option>
+                <option>20–30 hours</option>
+                <option>30–40 hours</option>
+                <option>40+ hours</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Earliest Available Start Date <span class="required">*</span></label>
+              <input type="date" class="form-field" required>
+            </div>
+            <div class="form-group md:col-span-2">
+              <label class="form-label">Available Days <span class="text-foreground-600 font-normal">(select all that apply)</span></label>
+              <div class="mt-2 grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+                <label class="check-label"><input type="checkbox"> Monday</label>
+                <label class="check-label"><input type="checkbox"> Tuesday</label>
+                <label class="check-label"><input type="checkbox"> Wednesday</label>
+                <label class="check-label"><input type="checkbox"> Thursday</label>
+                <label class="check-label"><input type="checkbox"> Friday</label>
+                <label class="check-label"><input type="checkbox"> Saturday</label>
+                <label class="check-label"><input type="checkbox"> Sunday</label>
+              </div>
+            </div>
+            <div class="form-group md:col-span-2">
+              <label class="form-label">Available Shifts <span class="text-foreground-600 font-normal">(select all that apply)</span></label>
+              <div class="mt-2 grid grid-cols-2 gap-2.5">
+                <label class="check-label"><input type="checkbox"> Morning (6 AM – 2 PM)</label>
+                <label class="check-label"><input type="checkbox"> Afternoon (2 PM – 10 PM)</label>
+                <label class="check-label"><input type="checkbox"> Overnight (10 PM – 6 AM)</label>
+                <label class="check-label"><input type="checkbox"> Flexible / Open</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── Section 3: Qualifications ── -->
+        <div>
+          <h3 class="form-section-title">3. Qualifications &amp; Credentials</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div class="form-group">
+              <label class="form-label">Highest Education Level</label>
+              <select class="form-field">
+                <option value="" disabled selected>Select</option>
+                <option>High School Diploma / GED</option>
+                <option>Some College</option>
+                <option>Associate's Degree</option>
+                <option>Bachelor's Degree</option>
+                <option>Graduate Degree</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Years of Caregiving / Healthcare Experience <span class="required">*</span></label>
+              <select class="form-field" required>
+                <option value="" disabled selected>Select</option>
+                <option>Less than 1 year</option>
+                <option>1–2 years</option>
+                <option>3–5 years</option>
+                <option>5–10 years</option>
+                <option>10+ years</option>
+              </select>
+            </div>
+            <div class="form-group md:col-span-2">
+              <label class="form-label">Certifications Held <span class="text-foreground-600 font-normal">(select all that apply)</span></label>
+              <div class="mt-2 grid grid-cols-2 sm:grid-cols-3 gap-2.5">
+                <label class="check-label"><input type="checkbox"> STNA (Ohio)</label>
+                <label class="check-label"><input type="checkbox"> CPR / First Aid</label>
+                <label class="check-label"><input type="checkbox"> CNA</label>
+                <label class="check-label"><input type="checkbox"> Home Health Aide (HHA)</label>
+                <label class="check-label"><input type="checkbox"> Alzheimer's / Dementia Care</label>
+                <label class="check-label"><input type="checkbox"> Other</label>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">STNA License Number <span class="text-foreground-600 font-normal">(if applicable)</span></label>
+              <input type="text" class="form-field" placeholder="OH-STNA-XXXXXXX">
+            </div>
+            <div class="form-group">
+              <label class="form-label">STNA License Expiration Date</label>
+              <input type="date" class="form-field">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Valid Driver's License? <span class="required">*</span></label>
+              <div class="mt-2 flex gap-6">
+                <label class="check-label"><input type="radio" name="has-license" value="yes" required> Yes</label>
+                <label class="check-label"><input type="radio" name="has-license" value="no"> No</label>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Reliable Transportation? <span class="required">*</span></label>
+              <div class="mt-2 flex gap-6">
+                <label class="check-label"><input type="radio" name="has-transport" value="yes" required> Yes</label>
+                <label class="check-label"><input type="radio" name="has-transport" value="no"> No</label>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Legally authorized to work in the US? <span class="required">*</span></label>
+              <div class="mt-2 flex gap-6">
+                <label class="check-label"><input type="radio" name="work-auth" value="yes" required> Yes</label>
+                <label class="check-label"><input type="radio" name="work-auth" value="no"> No</label>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Languages Spoken <span class="text-foreground-600 font-normal">(besides English)</span></label>
+              <input type="text" class="form-field" placeholder="e.g., Spanish, French, Twi">
+            </div>
+          </div>
+        </div>
+
+        <!-- ── Section 4: Background & References ── -->
+        <div>
+          <h3 class="form-section-title">4. Background &amp; References</h3>
+
+          <div class="p-5 rounded-xl bg-background-100 border border-background-200 mb-6">
+            <p class="text-sm text-foreground-700 leading-relaxed">
+              All applicants are required to consent to a background check as part of our hiring process. This helps us ensure the safety and wellbeing of every client we serve.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 gap-5">
+            <div class="form-group">
+              <label class="form-label">Have you ever been convicted of a felony or misdemeanor? <span class="required">*</span></label>
+              <div class="mt-2 flex gap-6">
+                <label class="check-label"><input type="radio" name="conviction" value="yes" required> Yes</label>
+                <label class="check-label"><input type="radio" name="conviction" value="no"> No</label>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">If yes, please explain <span class="text-foreground-600 font-normal">(a record does not automatically disqualify you)</span></label>
+              <textarea class="form-field" style="min-height:80px" placeholder="Optional explanation…"></textarea>
+            </div>
+            <div class="form-group">
+              <label class="check-label text-sm font-medium text-foreground-700">
+                <input type="checkbox" required>
+                <span>I consent to a background check as part of the hiring process. <span class="text-accent-600">*</span></span>
+              </label>
+            </div>
+          </div>
+
+          <!-- References -->
+          <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div>
+              <p class="text-sm font-semibold text-foreground-800 mb-4">Professional Reference 1 <span class="text-accent-600">*</span></p>
+              <div class="flex flex-col gap-3">
+                <input type="text" class="form-field" placeholder="Full name" required>
+                <input type="text" class="form-field" placeholder="Relationship / Title">
+                <input type="tel"  class="form-field" placeholder="Phone number">
+                <input type="email" class="form-field" placeholder="Email address">
+              </div>
+            </div>
+            <div>
+              <p class="text-sm font-semibold text-foreground-800 mb-4">Professional Reference 2</p>
+              <div class="flex flex-col gap-3">
+                <input type="text" class="form-field" placeholder="Full name">
+                <input type="text" class="form-field" placeholder="Relationship / Title">
+                <input type="tel"  class="form-field" placeholder="Phone number">
+                <input type="email" class="form-field" placeholder="Email address">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── Section 5: Personal Statement & Resume ── -->
+        <div>
+          <h3 class="form-section-title">5. Personal Statement &amp; Resume</h3>
+          <div class="flex flex-col gap-5">
+            <div class="form-group">
+              <label class="form-label">Why do you want to work with Kindness Home Care Services? <span class="required">*</span></label>
+              <textarea class="form-field" style="min-height:140px" placeholder="Tell us what draws you to this work and why you're a good fit for our team…" required></textarea>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Describe your experience caring for elderly or disabled individuals. <span class="required">*</span></label>
+              <textarea class="form-field" style="min-height:140px" placeholder="Types of clients you've cared for, tasks you've performed, challenges you've navigated…" required></textarea>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Is there anything else you'd like us to know? <span class="text-foreground-600 font-normal">(optional)</span></label>
+              <textarea class="form-field" style="min-height:100px" placeholder="Special skills, awards, languages, anything else…"></textarea>
+            </div>
+
+            <!-- Resume upload -->
+            <div class="form-group">
+              <label class="form-label">Resume / CV <span class="text-foreground-600 font-normal">(optional — PDF, DOC, or DOCX, max 5 MB)</span></label>
+              <div class="file-upload-area mt-1">
+                <i class="fa-solid fa-cloud-arrow-up text-3xl text-background-400 mb-3"></i>
+                <p class="text-sm text-foreground-600">Drag &amp; drop your resume here, or <span class="text-primary-600 font-semibold">browse files</span></p>
+                <p class="upload-filename mt-2 text-xs text-foreground-600"></p>
+                <input type="file" accept=".pdf,.doc,.docx" class="hidden" id="resume-upload">
+              </div>
+              <script>
+                document.querySelector('.file-upload-area').addEventListener('click', () => {
+                  document.getElementById('resume-upload').click();
+                });
+              </script>
+            </div>
+          </div>
+        </div>
+
+        <div class="pt-2">
+          <button type="submit"
+            class="w-full md:w-auto px-10 py-4 rounded-full bg-primary-500 hover:bg-primary-600 text-white text-sm font-semibold transition-colors flex items-center justify-center gap-2">
+            Submit Application <i class="fa-solid fa-paper-plane"></i>
+          </button>
+          <p class="mt-4 text-xs text-foreground-600 leading-relaxed">
+            By submitting, you confirm all information is truthful and complete. We review every application with care. See our <a href="privacy.html" class="underline text-primary-700">Privacy Policy</a>.
+          </p>
+        </div>
+
+      </form>
+    </div>
+
+    <!-- Sidebar -->
+    <aside class="space-y-6">
+      <div class="rounded-2xl bg-primary-50 border border-primary-200 p-6">
+        <span class="w-10 h-10 flex items-center justify-center rounded-full bg-primary-500 text-white mb-4">
+          <i class="fa-solid fa-heart-pulse"></i>
+        </span>
+        <h4 class="font-heading text-lg font-medium text-foreground-950">Why work with us?</h4>
+        <ul class="mt-4 space-y-2.5 text-sm text-foreground-700">
+          <li class="flex items-start gap-2"><i class="fa-solid fa-check text-primary-500 mt-0.5 shrink-0"></i> Flexible scheduling options</li>
+          <li class="flex items-start gap-2"><i class="fa-solid fa-check text-primary-500 mt-0.5 shrink-0"></i> Supportive, team-oriented culture</li>
+          <li class="flex items-start gap-2"><i class="fa-solid fa-check text-primary-500 mt-0.5 shrink-0"></i> 1:1 client assignments</li>
+          <li class="flex items-start gap-2"><i class="fa-solid fa-check text-primary-500 mt-0.5 shrink-0"></i> Competitive pay</li>
+          <li class="flex items-start gap-2"><i class="fa-solid fa-check text-primary-500 mt-0.5 shrink-0"></i> Meaningful, dignified work</li>
+        </ul>
+      </div>
+      <div class="rounded-2xl bg-background-100 border border-background-200 p-6">
+        <span class="w-10 h-10 flex items-center justify-center rounded-full bg-secondary-500 text-white mb-4">
+          <i class="fa-solid fa-shield-halved"></i>
+        </span>
+        <h4 class="font-heading text-lg font-medium text-foreground-950">What to expect</h4>
+        <p class="mt-2 text-sm text-foreground-700 leading-relaxed">After submission, our team reviews every application within 3–5 business days. Qualified candidates will be contacted for a phone or in-person interview.</p>
+      </div>
+      <div class="rounded-2xl bg-background-100 border border-background-200 p-6">
+        <h4 class="font-heading text-lg font-medium text-foreground-950">Questions?</h4>
+        <p class="mt-2 text-sm text-foreground-700 leading-relaxed">Email our hiring team at:</p>
+        <a href="mailto:hiring@kindnesshomecare.com" class="mt-2 inline-flex items-center gap-2 text-sm font-semibold text-primary-700">
+          <i class="fa-solid fa-envelope"></i> hiring@kindnesshomecare.com
+        </a>
+      </div>
+    </aside>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="px-4 md:px-6 pb-6 pt-8 bg-background-50">
+  <div class="rounded-3xl bg-secondary-950 text-background-50 px-6 md:px-12 lg:px-16 py-12 md:py-16">
+    <div class="grid grid-cols-1 lg:grid-cols-[2fr_1fr_1.4fr] gap-10 lg:gap-14">
+      <div>
+        <div class="flex items-center gap-3 mb-5">
+          <img src="assets/logo.png" alt="Kindness Home Care Services LLC" class="h-10 w-auto">
+          <span class="font-heading text-lg font-semibold">Kindness Home Care</span>
+        </div>
+        <h3 class="font-heading text-3xl font-light leading-tight">Stay close to the kindness.</h3>
+        <p class="mt-4 text-sm text-background-300 max-w-md leading-relaxed">Monthly notes on caring for aging loved ones at home — gentle reminders, helpful resources, and stories from our families.</p>
+        <form id="newsletter-form" class="mt-8">
+          <div class="flex items-center gap-3 border-b border-background-700 pb-2">
+            <input required type="email" placeholder="your@email.com" class="flex-1 bg-transparent text-sm placeholder:text-background-500 text-background-50 focus:outline-none py-2">
+            <button type="submit" class="px-5 py-2.5 rounded-full bg-background-50 text-foreground-950 text-sm font-semibold flex items-center gap-2 hover:bg-background-100 transition-colors">Subscribe <i class="fa-solid fa-arrow-right"></i></button>
+          </div>
+          <p id="newsletter-success" class="hidden mt-3 text-sm text-primary-300"><i class="fa-solid fa-circle-check mr-1"></i> Thank you! You've been subscribed.</p>
+        </form>
+        <div class="mt-8 flex flex-wrap gap-2">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-background-50/8 text-background-400 text-[11px]">
+            <i class="fa-solid fa-shield-halved text-primary-400"></i> Liability Insured
+          </span>
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-background-50/8 text-background-400 text-[11px]">
+            <i class="fa-solid fa-certificate text-primary-400"></i> Bonded
+          </span>
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-background-50/8 text-background-400 text-[11px]">
+            <i class="fa-solid fa-user-shield text-primary-400"></i> Workers' Comp
+          </span>
+        </div>
+      </div>
+      <div>
+        <h4 class="text-xs uppercase tracking-[0.18em] text-background-400 font-semibold">Explore</h4>
+        <ul class="mt-5 space-y-3">
+          <li><a href="index.html"    class="text-sm text-background-100 hover:text-background-50 underline-offset-4 hover:underline">Home</a></li>
+          <li><a href="services.html" class="text-sm text-background-100 hover:text-background-50 underline-offset-4 hover:underline">Services</a></li>
+          <li><a href="apply.html"    class="text-sm text-background-100 hover:text-background-50 underline-offset-4 hover:underline">Apply for Care</a></li>
+          <li><a href="payment.html"  class="text-sm text-background-100 hover:text-background-50 underline-offset-4 hover:underline">Payment</a></li>
+          <li><a href="about.html"    class="text-sm text-background-100 hover:text-background-50 underline-offset-4 hover:underline">About Us</a></li>
+          <li><a href="contact.html"  class="text-sm text-background-100 hover:text-background-50 underline-offset-4 hover:underline">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-xs uppercase tracking-[0.18em] text-background-400 font-semibold">Get in touch</h4>
+        <p class="mt-5 text-sm text-background-100"><a href="tel:+16145550199" class="hover:text-background-50">(614) 555-0199</a></p>
+        <p class="mt-2 text-sm text-background-100"><a href="mailto:care@kindnesshomecare.com" class="hover:text-background-50">care@kindnesshomecare.com</a></p>
+        <h4 class="mt-8 text-xs uppercase tracking-[0.18em] text-background-400 font-semibold">Office</h4>
+        <p class="mt-4 text-sm text-background-100 leading-relaxed">1248 Compassion Lane, Suite 200<br>Columbus, OH 43215</p>
+      </div>
+    </div>
+    <div class="mt-10 pt-6 border-t border-background-800 flex flex-col sm:flex-row items-center gap-4 justify-between">
+      <div class="flex items-center gap-5 text-sm">
+        <a href="https://facebook.com/"  target="_blank" rel="noopener noreferrer" class="text-background-200 hover:text-background-50">Facebook</a>
+        <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer" class="text-background-200 hover:text-background-50">Instagram</a>
+        <a href="https://linkedin.com/"  target="_blank" rel="noopener noreferrer" class="text-background-200 hover:text-background-50">LinkedIn</a>
+      </div>
+      <p class="text-xs text-background-400 text-center">© 2026 Kindness Home Care Services LLC. All rights reserved.</p>
+      <div class="flex items-center gap-4 text-xs">
+        <a href="privacy.html" class="text-background-300 hover:text-background-50">Privacy Policy</a>
+        <a href="terms.html"   class="text-background-300 hover:text-background-50">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>

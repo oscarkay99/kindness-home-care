@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | Kindness Home Care Services LLC</title>
+  <meta name="description" content="Get in touch with Kindness Home Care Services LLC. We're here to answer your questions about home care in Columbus, Ohio.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary:    { 50:'#FDFCE8',100:'#FCF6C8',200:'#F7EC90',300:'#EEDB50',400:'#E0C424',500:'#C4A410',600:'#A08608',700:'#7C6606',800:'#5A4A04',900:'#3A3002',950:'#241E01' },
+            secondary:  { 50:'#F0FAFA',100:'#DCEFEC',200:'#B4E0D8',300:'#7FCFC4',400:'#40B8AC',500:'#1A9D92',600:'#0F7E76',700:'#0A6058',800:'#08443E',900:'#062C2A',950:'#041A18' },
+            background: { 50:'#FAF9F7',100:'#F3F1EC',200:'#E6E2D8',300:'#D3CDB9',400:'#B8B09B',500:'#9A927C',600:'#786E5E',700:'#5A5246',800:'#3C3730',900:'#262219',950:'#14120E' },
+            accent:     { 100:'#E0F4DE',200:'#BAEBB8',300:'#82D87C',400:'#4ABE48',500:'#1EA024',600:'#148018',700:'#0C6012',800:'#08440C',900:'#062C08',950:'#041C04' },
+            foreground: { 500:'#5E6A64',600:'#4A5450',700:'#383E3C',800:'#262A28',950:'#141A18' },
+          },
+          fontFamily: { heading: ['"Fraunces"','Georgia','serif'] },
+        },
+      },
+    }
+  </script>
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="site-header" class="fixed top-0 left-0 right-0 z-50 bg-transparent">
+  <div class="w-full px-6 md:px-10 lg:px-14">
+    <div class="flex items-center justify-between h-20">
+      <a href="index.html" class="flex items-center group">
+        <img src="assets/logo.png" alt="Kindness Home Care Services LLC" class="h-12 w-auto">
+      </a>
+      <nav class="hidden lg:flex items-center gap-1">
+        <a href="index.html"    class="nav-link px-4 py-2 text-sm font-medium rounded-full text-background-50/90 hover:text-background-50 hover:bg-background-50/10">Home</a>
+        <a href="services.html" class="nav-link px-4 py-2 text-sm font-medium rounded-full text-background-50/90 hover:text-background-50 hover:bg-background-50/10">Services</a>
+        <a href="apply.html"    class="nav-link px-4 py-2 text-sm font-medium rounded-full text-background-50/90 hover:text-background-50 hover:bg-background-50/10">Apply</a>
+        <a href="payment.html"  class="nav-link px-4 py-2 text-sm font-medium rounded-full text-background-50/90 hover:text-background-50 hover:bg-background-50/10">Payment</a>
+        <a href="about.html"    class="nav-link px-4 py-2 text-sm font-medium rounded-full text-background-50/90 hover:text-background-50 hover:bg-background-50/10">About</a>
+        <a href="contact.html"  class="nav-link active px-4 py-2 text-sm font-medium rounded-full text-background-50 bg-background-50/20">Contact</a>
+      </nav>
+      <div class="hidden lg:flex items-center gap-3">
+        <a href="tel:+16145550199" class="header-contact flex items-center gap-2 text-sm font-medium text-background-50/80 hover:text-background-50 transition-colors">
+          <i class="fa-solid fa-phone text-xs"></i> (614) 555-0199
+        </a>
+        <a href="apply.html" class="px-5 py-2.5 rounded-full bg-primary-500 hover:bg-primary-600 text-white text-sm font-semibold transition-colors">Request Care</a>
+      </div>
+      <button id="menu-toggle" aria-expanded="false" class="lg:hidden w-10 h-10 flex items-center justify-center rounded-full text-background-50 hover:bg-background-50/10 transition-colors">
+        <i class="fa-solid fa-bars text-lg"></i>
+      </button>
+    </div>
+  </div>
+  <div id="mobile-menu" class="mobile-menu lg:hidden bg-background-50 border-t border-background-200 shadow-lg">
+    <nav class="px-6 py-4 flex flex-col gap-1">
+      <a href="index.html"    class="px-4 py-3 text-sm font-medium rounded-xl text-foreground-700 hover:bg-background-100">Home</a>
+      <a href="services.html" class="px-4 py-3 text-sm font-medium rounded-xl text-foreground-700 hover:bg-background-100">Services</a>
+      <a href="apply.html"    class="px-4 py-3 text-sm font-medium rounded-xl text-foreground-700 hover:bg-background-100">Apply</a>
+      <a href="payment.html"  class="px-4 py-3 text-sm font-medium rounded-xl text-foreground-700 hover:bg-background-100">Payment</a>
+      <a href="about.html"    class="px-4 py-3 text-sm font-medium rounded-xl text-foreground-700 hover:bg-background-100">About</a>
+      <a href="contact.html"  class="px-4 py-3 text-sm font-medium rounded-xl text-foreground-950 bg-primary-50">Contact</a>
+      <div class="mt-2 pt-2 border-t border-background-200 flex flex-col gap-2">
+        <a href="tel:+16145550199" class="flex items-center justify-center gap-2 px-5 py-3 text-sm font-medium text-foreground-700 rounded-xl border border-background-200 hover:bg-background-100 transition-colors">
+          <i class="fa-solid fa-phone text-xs text-primary-600"></i> (614) 555-0199
+        </a>
+        <a href="apply.html" class="block text-center px-5 py-3 rounded-full bg-primary-500 hover:bg-primary-600 text-white text-sm font-semibold transition-colors">Request Care</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- PAGE HERO -->
+<section class="relative w-full min-h-[360px] flex items-end overflow-hidden">
+  <div class="absolute inset-0 hero-page"></div>
+  <div class="absolute inset-0 bg-gradient-to-b from-black/10 to-black/65"></div>
+  <div class="relative z-10 w-full px-6 md:px-10 lg:px-14 pb-14 pt-36">
+    <div class="max-w-5xl">
+      <h1 class="font-heading text-4xl md:text-6xl font-light text-background-50 leading-tight">
+        We'd love to hear from you.
+      </h1>
+      <p class="mt-5 max-w-xl text-background-100 text-base md:text-lg leading-relaxed">
+        Whether you have a question about services, pricing, or your loved one's care — our team is here.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT MAIN -->
+<section class="bg-background-50 px-6 md:px-10 lg:px-14 py-20 md:py-28">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[1.5fr_1fr] gap-12 lg:gap-16">
+
+    <!-- Contact Form -->
+    <div>
+      <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary-100 text-primary-700 text-[11px] font-semibold uppercase tracking-[0.18em]">Send a message</span>
+      <h2 class="mt-5 font-heading text-3xl md:text-4xl font-light text-foreground-950 leading-snug">
+        Get in touch with our team.
+      </h2>
+      <p class="mt-3 text-base text-foreground-700 leading-relaxed">
+        We respond to all inquiries within one business day. For urgent needs, please call us directly at <a href="tel:+16145550199" class="text-primary-700 font-semibold">(614) 555-0199</a>.
+      </p>
+
+      <!-- Success -->
+      <div id="contact-form-success" class="form-success mt-6">
+        <i class="fa-solid fa-circle-check text-primary-600 text-2xl shrink-0"></i>
+        <div>
+          <p class="font-semibold text-primary-800">Message sent — thank you!</p>
+          <p class="text-sm text-primary-700 mt-1">We'll be in touch within one business day.</p>
+        </div>
+      </div>
+
+      <form id="contact-form" data-form="contact-form" class="mt-10 flex flex-col gap-5" novalidate>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <div class="form-group">
+            <label class="form-label">Your Name <span class="required">*</span></label>
+            <input type="text" class="form-field" placeholder="Jane Smith" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Your Phone</label>
+            <input type="tel" class="form-field" placeholder="(614) 000-0000">
+          </div>
+          <div class="form-group md:col-span-2">
+            <label class="form-label">Your Email <span class="required">*</span></label>
+            <input type="email" class="form-field" placeholder="you@email.com" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Subject <span class="required">*</span></label>
+          <select class="form-field" required>
+            <option value="" disabled selected>What is this about?</option>
+            <option>Requesting care for a loved one</option>
+            <option>Caregiver job application</option>
+            <option>Pricing and payment question</option>
+            <option>Insurance / Certificate of Insurance</option>
+            <option>Service agreement question</option>
+            <option>General inquiry</option>
+            <option>Feedback or complaint</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Message <span class="required">*</span></label>
+          <textarea class="form-field" style="min-height:160px" placeholder="Tell us how we can help…" required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Best way to reach you</label>
+          <div class="mt-2 flex gap-6">
+            <label class="check-label"><input type="radio" name="contact-pref" value="email"> Email</label>
+            <label class="check-label"><input type="radio" name="contact-pref" value="phone"> Phone call</label>
+            <label class="check-label"><input type="radio" name="contact-pref" value="text"> Text message</label>
+          </div>
+        </div>
+
+        <div class="pt-2">
+          <button type="submit" class="w-full md:w-auto px-10 py-4 rounded-full bg-primary-500 hover:bg-primary-600 text-white text-sm font-semibold transition-colors flex items-center justify-center gap-2">
+            Send Message <i class="fa-solid fa-paper-plane"></i>
+          </button>
+          <p class="mt-4 text-xs text-foreground-600">
+            By submitting, you agree to our <a href="privacy.html" class="underline text-primary-700">Privacy Policy</a>. We'll never share your information.
+          </p>
+        </div>
+
+      </form>
+    </div>
+
+    <!-- Contact Info Sidebar -->
+    <aside class="space-y-5">
+
+      <div class="rounded-2xl bg-secondary-950 text-background-50 p-7">
+        <h3 class="font-heading text-xl font-medium mb-6">Contact Information</h3>
+        <div class="space-y-5">
+          <div class="flex items-start gap-4">
+            <span class="w-10 h-10 flex items-center justify-center rounded-full bg-primary-500 text-white shrink-0 mt-0.5">
+              <i class="fa-solid fa-phone"></i>
+            </span>
+            <div>
+              <p class="text-xs text-background-400 uppercase tracking-wider mb-1">Phone</p>
+              <a href="tel:+16145550199" class="text-background-50 font-semibold hover:text-primary-300">(614) 555-0199</a>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <span class="w-10 h-10 flex items-center justify-center rounded-full bg-primary-500 text-white shrink-0 mt-0.5">
+              <i class="fa-solid fa-envelope"></i>
+            </span>
+            <div>
+              <p class="text-xs text-background-400 uppercase tracking-wider mb-1">Email</p>
+              <a href="mailto:care@kindnesshomecare.com" class="text-background-50 hover:text-primary-300 text-sm">care@kindnesshomecare.com</a>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <span class="w-10 h-10 flex items-center justify-center rounded-full bg-primary-500 text-white shrink-0 mt-0.5">
+              <i class="fa-solid fa-briefcase"></i>
+            </span>
+            <div>
+              <p class="text-xs text-background-400 uppercase tracking-wider mb-1">Hiring / Careers</p>
+              <a href="mailto:hiring@kindnesshomecare.com" class="text-background-50 hover:text-primary-300 text-sm">hiring@kindnesshomecare.com</a>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <span class="w-10 h-10 flex items-center justify-center rounded-full bg-primary-500 text-white shrink-0 mt-0.5">
+              <i class="fa-solid fa-location-dot"></i>
+            </span>
+            <div>
+              <p class="text-xs text-background-400 uppercase tracking-wider mb-1">Office Address</p>
+              <p class="text-background-100 text-sm leading-relaxed">1248 Compassion Lane, Suite 200<br>Columbus, OH 43215</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="rounded-2xl bg-background-100 border border-background-200 p-7">
+        <h3 class="font-heading text-xl font-medium text-foreground-950 mb-5">Office Hours</h3>
+        <div class="space-y-3">
+          <div class="flex justify-between text-sm">
+            <span class="text-foreground-700">Monday – Friday</span>
+            <span class="font-semibold text-foreground-950">8:00 AM – 6:00 PM</span>
+          </div>
+          <div class="flex justify-between text-sm">
+            <span class="text-foreground-700">Saturday</span>
+            <span class="font-semibold text-foreground-950">9:00 AM – 3:00 PM</span>
+          </div>
+          <div class="flex justify-between text-sm">
+            <span class="text-foreground-700">Sunday</span>
+            <span class="font-medium text-foreground-600">Closed (care available)</span>
+          </div>
+          <div class="pt-3 border-t border-background-200">
+            <p class="text-xs text-foreground-600 leading-relaxed">
+              <i class="fa-solid fa-circle-info text-primary-500 mr-1"></i>
+              Care services are available 24 hours a day, 7 days a week, including holidays.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="rounded-2xl bg-primary-50 border border-primary-200 p-7">
+        <h3 class="font-heading text-xl font-medium text-foreground-950 mb-3">Need care urgently?</h3>
+        <p class="text-sm text-foreground-700 leading-relaxed mb-5">If your situation is time-sensitive, please call us directly. We'll do our best to accommodate urgent timelines.</p>
+        <a href="tel:+16145550199" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-primary-500 hover:bg-primary-600 text-white text-sm font-semibold transition-colors">
+          <i class="fa-solid fa-phone"></i> Call (614) 555-0199
+        </a>
+      </div>
+
+      <div class="rounded-2xl bg-background-100 border border-background-200 p-7">
+        <h3 class="font-heading text-lg font-medium text-foreground-950 mb-4">Follow Us</h3>
+        <div class="flex gap-3">
+          <a href="https://facebook.com/" target="_blank" rel="noopener" class="w-10 h-10 flex items-center justify-center rounded-full bg-background-50 border border-background-200 text-foreground-700 hover:bg-primary-500 hover:text-white hover:border-primary-500 transition-colors">
+            <i class="fa-brands fa-facebook-f"></i>
+          </a>
+          <a href="https://instagram.com/" target="_blank" rel="noopener" class="w-10 h-10 flex items-center justify-center rounded-full bg-background-50 border border-background-200 text-foreground-700 hover:bg-primary-500 hover:text-white hover:border-primary-500 transition-colors">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+          <a href="https://linkedin.com/" target="_blank" rel="noopener" class="w-10 h-10 flex items-center justify-center rounded-full bg-background-50 border border-background-200 text-foreground-700 hover:bg-primary-500 hover:text-white hover:border-primary-500 transition-colors">
+            <i class="fa-brands fa-linkedin-in"></i>
+          </a>
+        </div>
+      </div>
+
+    </aside>
+  </div>
+</section>
+
+<!-- MAP PLACEHOLDER -->
+<section class="bg-background-100 px-6 md:px-10 lg:px-14 pb-20">
+  <div class="max-w-7xl mx-auto">
+    <div class="rounded-2xl overflow-hidden border border-background-200" style="height: 320px; background: linear-gradient(135deg, #D3CDB9 0%, #B8B09B 50%, #9A927C 100%); display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 12px;">
+      <i class="fa-solid fa-map-location-dot text-background-600 text-5xl"></i>
+      <div class="text-center">
+        <p class="font-heading text-xl text-background-700">Columbus, Ohio</p>
+        <p class="text-sm text-background-600 mt-1">1248 Compassion Lane, Suite 200 · Columbus, OH 43215</p>
+        <a href="https://maps.google.com/?q=Columbus+OH" target="_blank" rel="noopener"
+          class="mt-4 inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-background-50 border border-background-200 text-foreground-700 text-sm font-medium hover:bg-background-50/90 transition-colors">
+          <i class="fa-solid fa-arrow-up-right-from-square"></i> Open in Google Maps
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="px-4 md:px-6 pb-6 pt-4 bg-background-100">
+  <div class="rounded-3xl bg-secondary-950 text-background-50 px-6 md:px-12 lg:px-16 py-12 md:py-16">
+    <div class="grid grid-cols-1 lg:grid-cols-[2fr_1fr_1.4fr] gap-10 lg:gap-14">
+      <div>
+        <div class="flex items-center gap-3 mb-5">
+          <img src="assets/logo.png" alt="Kindness Home Care Services LLC" class="h-10 w-auto">
+          <span class="font-heading text-lg font-semibold">Kindness Home Care</span>
+        </div>
+        <h3 class="font-heading text-3xl font-light leading-tight">Stay close to the kindness.</h3>
+        <p class="mt-4 text-sm text-background-300 max-w-md leading-relaxed">Monthly notes on caring for aging loved ones at home — gentle reminders, helpful resources, and stories from our families.</p>
+        <form id="newsletter-form" class="mt-8">
+          <div class="flex items-center gap-3 border-b border-background-700 pb-2">
+            <input required type="email" placeholder="your@email.com" class="flex-1 bg-transparent text-sm placeholder:text-background-500 text-background-50 focus:outline-none py-2">
+            <button type="submit" class="px-5 py-2.5 rounded-full bg-background-50 text-foreground-950 text-sm font-semibold flex items-center gap-2 hover:bg-background-100 transition-colors">Subscribe <i class="fa-solid fa-arrow-right"></i></button>
+          </div>
+          <p id="newsletter-success" class="hidden mt-3 text-sm text-primary-300"><i class="fa-solid fa-circle-check mr-1"></i> Thank you! You've been subscribed.</p>
+        </form>
+        <div class="mt-8 flex flex-wrap gap-2">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-background-50/8 text-background-400 text-[11px]">
+            <i class="fa-solid fa-shield-halved text-primary-400"></i> Liability Insured
+          </span>
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-background-50/8 text-background-400 text-[11px]">
+            <i class="fa-solid fa-certificate text-primary-400"></i> Bonded
+          </span>
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-background-50/8 text-background-400 text-[11px]">
+            <i class="fa-solid fa-user-shield text-primary-400"></i> Workers' Comp
+          </span>
+        </div>
+      </div>
+      <div>
+        <h4 class="text-xs uppercase tracking-[0.18em] text-background-400 font-semibold">Explore</h4>
+        <ul class="mt-5 space-y-3">
+          <li><a href="index.html"    class="text-sm text-background-100 hover:text-background-50 underline-offset-4 hover:underline">Home</a></li>
+          <li><a href="services.html" class="text-sm text-background-100 hover:text-background-50 underline-offset-4 hover:underline">Services</a></li>
+          <li><a href="apply.html"    class="text-sm text-background-100 hover:text-background-50 underline-offset-4 hover:underline">Apply for Care</a></li>
+          <li><a href="payment.html"  class="text-sm text-background-100 hover:text-background-50 underline-offset-4 hover:underline">Payment</a></li>
+          <li><a href="about.html"    class="text-sm text-background-100 hover:text-background-50 underline-offset-4 hover:underline">About Us</a></li>
+          <li><a href="contact.html"  class="text-sm text-background-100 hover:text-background-50 underline-offset-4 hover:underline">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-xs uppercase tracking-[0.18em] text-background-400 font-semibold">Get in touch</h4>
+        <p class="mt-5 text-sm text-background-100"><a href="tel:+16145550199" class="hover:text-background-50">(614) 555-0199</a></p>
+        <p class="mt-2 text-sm text-background-100"><a href="mailto:care@kindnesshomecare.com" class="hover:text-background-50">care@kindnesshomecare.com</a></p>
+        <h4 class="mt-8 text-xs uppercase tracking-[0.18em] text-background-400 font-semibold">Office</h4>
+        <p class="mt-4 text-sm text-background-100 leading-relaxed">1248 Compassion Lane, Suite 200<br>Columbus, OH 43215</p>
+      </div>
+    </div>
+    <div class="mt-10 pt-6 border-t border-background-800 flex flex-col sm:flex-row items-center gap-4 justify-between">
+      <div class="flex items-center gap-5 text-sm">
+        <a href="https://facebook.com/"  target="_blank" rel="noopener noreferrer" class="text-background-200 hover:text-background-50">Facebook</a>
+        <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer" class="text-background-200 hover:text-background-50">Instagram</a>
+        <a href="https://linkedin.com/"  target="_blank" rel="noopener noreferrer" class="text-background-200 hover:text-background-50">LinkedIn</a>
+      </div>
+      <p class="text-xs text-background-400 text-center">© 2026 Kindness Home Care Services LLC. All rights reserved.</p>
+      <div class="flex items-center gap-4 text-xs">
+        <a href="privacy.html" class="text-background-300 hover:text-background-50">Privacy Policy</a>
+        <a href="terms.html"   class="text-background-300 hover:text-background-50">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>

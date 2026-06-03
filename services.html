@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Services | Kindness Home Care Services LLC</title>
+  <meta name="description" content="Explore our private pay home care services: 24-hour live-in care, companionship, errands, cooking, grooming, STNA care support, and daily living assistance.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary:    { 50:'#FDFCE8',100:'#FCF6C8',200:'#F7EC90',300:'#EEDB50',400:'#E0C424',500:'#C4A410',600:'#A08608',700:'#7C6606',800:'#5A4A04',900:'#3A3002',950:'#241E01' },
+            secondary:  { 50:'#F0FAFA',100:'#DCEFEC',200:'#B4E0D8',300:'#7FCFC4',400:'#40B8AC',500:'#1A9D92',600:'#0F7E76',700:'#0A6058',800:'#08443E',900:'#062C2A',950:'#041A18' },
+            background: { 50:'#FAF9F7',100:'#F3F1EC',200:'#E6E2D8',300:'#D3CDB9',400:'#B8B09B',500:'#9A927C',600:'#786E5E',700:'#5A5246',800:'#3C3730',900:'#262219',950:'#14120E' },
+            accent:     { 100:'#E0F4DE',200:'#BAEBB8',300:'#82D87C',400:'#4ABE48',500:'#1EA024',600:'#148018',700:'#0C6012',800:'#08440C',900:'#062C08',950:'#041C04' },
+            foreground: { 500:'#5E6A64',600:'#4A5450',700:'#383E3C',800:'#262A28',950:'#141A18' },
+          },
+          fontFamily: { heading: ['"Fraunces"','Georgia','serif'] },
+        },
+      },
+    }
+  </script>
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="site-header" class="fixed top-0 left-0 right-0 z-50 bg-transparent">
+  <div class="w-full px-6 md:px-10 lg:px-14">
+    <div class="flex items-center justify-between h-20">
+      <a href="index.html" class="flex items-center group">
+        <img src="assets/logo.png" alt="Kindness Home Care Services LLC" class="h-12 w-auto">
+      </a>
+      <nav class="hidden lg:flex items-center gap-1">
+        <a href="index.html"    class="nav-link px-4 py-2 text-sm font-medium rounded-full text-background-50/90 hover:text-background-50 hover:bg-background-50/10">Home</a>
+        <a href="services.html" class="nav-link active px-4 py-2 text-sm font-medium rounded-full text-background-50 bg-background-50/20">Services</a>
+        <a href="apply.html"    class="nav-link px-4 py-2 text-sm font-medium rounded-full text-background-50/90 hover:text-background-50 hover:bg-background-50/10">Apply</a>
+        <a href="payment.html"  class="nav-link px-4 py-2 text-sm font-medium rounded-full text-background-50/90 hover:text-background-50 hover:bg-background-50/10">Payment</a>
+        <a href="about.html"    class="nav-link px-4 py-2 text-sm font-medium rounded-full text-background-50/90 hover:text-background-50 hover:bg-background-50/10">About</a>
+        <a href="contact.html"  class="nav-link px-4 py-2 text-sm font-medium rounded-full text-background-50/90 hover:text-background-50 hover:bg-background-50/10">Contact</a>
+      </nav>
+      <div class="hidden lg:flex items-center gap-3">
+        <a href="tel:+16145550199" class="header-contact flex items-center gap-2 text-sm font-medium text-background-50/80 hover:text-background-50 transition-colors">
+          <i class="fa-solid fa-phone text-xs"></i> (614) 555-0199
+        </a>
+        <a href="apply.html" class="px-5 py-2.5 rounded-full bg-primary-500 hover:bg-primary-600 text-white text-sm font-semibold transition-colors">Request Care</a>
+      </div>
+      <button id="menu-toggle" aria-expanded="false" aria-label="Toggle navigation"
+        class="lg:hidden w-10 h-10 flex items-center justify-center rounded-full text-background-50 hover:bg-background-50/10 transition-colors">
+        <i class="fa-solid fa-bars text-lg"></i>
+      </button>
+    </div>
+  </div>
+  <div id="mobile-menu" class="mobile-menu lg:hidden bg-background-50 border-t border-background-200 shadow-lg">
+    <nav class="px-6 py-4 flex flex-col gap-1">
+      <a href="index.html"    class="px-4 py-3 text-sm font-medium rounded-xl text-foreground-700 hover:bg-background-100">Home</a>
+      <a href="services.html" class="px-4 py-3 text-sm font-medium rounded-xl text-foreground-950 bg-primary-50">Services</a>
+      <a href="apply.html"    class="px-4 py-3 text-sm font-medium rounded-xl text-foreground-700 hover:bg-background-100">Apply</a>
+      <a href="payment.html"  class="px-4 py-3 text-sm font-medium rounded-xl text-foreground-700 hover:bg-background-100">Payment</a>
+      <a href="about.html"    class="px-4 py-3 text-sm font-medium rounded-xl text-foreground-700 hover:bg-background-100">About</a>
+      <a href="contact.html"  class="px-4 py-3 text-sm font-medium rounded-xl text-foreground-700 hover:bg-background-100">Contact</a>
+      <div class="mt-2 pt-2 border-t border-background-200 flex flex-col gap-2">
+        <a href="tel:+16145550199" class="flex items-center justify-center gap-2 px-5 py-3 text-sm font-medium text-foreground-700 rounded-xl border border-background-200 hover:bg-background-100 transition-colors">
+          <i class="fa-solid fa-phone text-xs text-primary-600"></i> (614) 555-0199
+        </a>
+        <a href="apply.html" class="block text-center px-5 py-3 rounded-full bg-primary-500 hover:bg-primary-600 text-white text-sm font-semibold transition-colors">Request Care</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- PAGE HERO -->
+<section class="relative w-full min-h-[480px] flex items-end overflow-hidden">
+  <div class="absolute inset-0 hero-page"></div>
+  <div class="absolute inset-0 bg-gradient-to-b from-black/10 to-black/60"></div>
+  <div class="relative z-10 w-full px-6 md:px-10 lg:px-14 pb-16 pt-36">
+    <div class="max-w-5xl">
+      <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary-100 text-primary-700 text-[11px] font-semibold uppercase tracking-[0.18em]">Private pay services</span>
+      <h1 class="mt-6 font-heading text-4xl md:text-6xl font-light text-background-50 leading-tight">
+        Care shaped around <em>the person,</em><br>not a checklist.
+      </h1>
+      <p class="mt-5 max-w-2xl text-background-100 text-base md:text-lg leading-relaxed">
+        Every service we offer is designed to preserve independence, dignity, and joy — in the place that matters most: home.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- QUICK LINKS -->
+<nav class="bg-background-100 border-b border-background-200 sticky top-[80px] z-40">
+  <div class="max-w-7xl mx-auto px-6 md:px-10 lg:px-14 flex gap-2 overflow-x-auto py-3 no-scrollbar">
+    <a href="#live-in"       class="px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap bg-primary-500 text-white">Live-In Care</a>
+    <a href="#companionship" class="px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap bg-background-50 border border-background-200 text-foreground-700 hover:border-primary-400 hover:text-primary-700">Companionship</a>
+    <a href="#errands"       class="px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap bg-background-50 border border-background-200 text-foreground-700 hover:border-primary-400 hover:text-primary-700">Errands &amp; Daily Help</a>
+    <a href="#cooking"       class="px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap bg-background-50 border border-background-200 text-foreground-700 hover:border-primary-400 hover:text-primary-700">Cooking &amp; Grooming</a>
+    <a href="#stna"          class="px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap bg-background-50 border border-background-200 text-foreground-700 hover:border-primary-400 hover:text-primary-700">STNA Care</a>
+    <a href="#daily"         class="px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap bg-background-50 border border-background-200 text-foreground-700 hover:border-primary-400 hover:text-primary-700">Daily Living</a>
+  </div>
+</nav>
+
+<!-- SERVICES DETAIL -->
+<main class="bg-background-50">
+  <div class="max-w-7xl mx-auto px-6 md:px-10 lg:px-14 py-20 md:py-28 flex flex-col gap-24">
+
+    <!-- 1. 24-Hour Live-In Care -->
+    <div id="live-in" class="scroll-mt-40 grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-12 items-center">
+      <div class="w-full aspect-[4/3] rounded-2xl overflow-hidden">
+        <img src="https://images.pexels.com/photos/6646815/pexels-photo-6646815.jpeg?auto=compress&cs=tinysrgb&w=1000&q=80" alt="24-Hour Live-In Care" class="w-full h-full object-cover">
+      </div>
+      <div>
+        <span class="inline-flex items-center gap-2 w-12 h-12 justify-center rounded-full bg-primary-100 text-primary-700 mb-6">
+          <i class="fa-solid fa-moon text-xl"></i>
+        </span>
+        <h2 class="font-heading text-3xl md:text-4xl font-medium text-foreground-950">24-Hour Live-In Care</h2>
+        <p class="mt-5 text-base text-foreground-700 leading-relaxed">
+          For clients who require continuous oversight, our live-in caregivers become a steady, reassuring presence in the home — day and night. They sleep on-site and are available around the clock, so families can rest knowing their loved one is never alone.
+        </p>
+        <ul class="mt-6 space-y-3">
+          <li class="flex items-start gap-3 text-sm text-foreground-700"><i class="fa-solid fa-check text-primary-500 mt-0.5 shrink-0"></i> Continuous overnight supervision and support</li>
+          <li class="flex items-start gap-3 text-sm text-foreground-700"><i class="fa-solid fa-check text-primary-500 mt-0.5 shrink-0"></i> Assistance with morning and evening routines</li>
+          <li class="flex items-start gap-3 text-sm text-foreground-700"><i class="fa-solid fa-check text-primary-500 mt-0.5 shrink-0"></i> Emergency response and family communication</li>
+          <li class="flex items-start gap-3 text-sm text-foreground-700"><i class="fa-solid fa-check text-primary-500 mt-0.5 shrink-0"></i> Medication reminders and fall prevention</li>
+          <li class="flex items-start gap-3 text-sm text-foreground-700"><i class="fa-solid fa-check text-primary-500 mt-0.5 shrink-0"></i> Companionship throughout the day</li>
+        </ul>
+        <div class="mt-8 flex items-center gap-4">
+          <a href="apply.html" class="px-6 py-3.5 rounded-full bg-primary-500 hover:bg-primary-600 text-white text-sm font-semibold transition-colors">Request This Service</a>
+          <a href="contact.html" class="px-6 py-3.5 rounded-full border border-background-300 hover:border-primary-400 text-foreground-700 hover:text-primary-700 text-sm font-semibold transition-colors">Ask a Question</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="w-full h-px bg-background-200"></div>
+
+    <!-- 2. Companionship -->
+    <div id="companionship" class="scroll-mt-40 grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-12 items-center">
+      <div class="order-2 lg:order-1">
+        <span class="inline-flex items-center gap-2 w-12 h-12 justify-center rounded-full bg-primary-100 text-primary-700 mb-6">
+          <i class="fa-solid fa-mug-hot text-xl"></i>
+        </span>
+        <h2 class="font-heading text-3xl md:text-4xl font-medium text-foreground-950">Companionship</h2>
+        <p class="mt-5 text-base text-foreground-700 leading-relaxed">
+          Loneliness is one of the greatest challenges facing older adults. Our companionship service pairs clients with warm, engaged caregivers who genuinely listen, share stories, play games, and help bring color back to everyday life.
+        </p>
+        <ul class="mt-6 space-y-3">
+          <li class="flex items-start gap-3 text-sm text-foreground-700"><i class="fa-solid fa-check text-primary-500 mt-0.5 shrink-0"></i> Genuine, unhurried conversation and listening</li>
+          <li class="flex items-start gap-3 text-sm text-foreground-700"><i class="fa-solid fa-check text-primary-500 mt-0.5 shrink-0"></i> Shared meals and leisurely walks</li>
+          <li class="flex items-start gap-3 text-sm text-foreground-700"><i class="fa-solid fa-check text-primary-500 mt-0.5 shrink-0"></i> Card games, reading, hobbies, and activities</li>
+          <li class="flex items-start gap-3 text-sm text-foreground-700"><i class="fa-solid fa-check text-primary-500 mt-0.5 shrink-0"></i> Accompaniment to appointments and outings</li>
+          <li class="flex items-start gap-3 text-sm text-foreground-700"><i class="fa-solid fa-check text-primary-500 mt-0.5 shrink-0"></i> Regular progress updates for the family</li>
+        </ul>
+        <div class="mt-8 flex items-center gap-4">
+          <a href="apply.html" class="px-6 py-3.5 rounded-full bg-primary-500 hover:bg-primary-600 text-white text-sm font-semibold transition-colors">Request This Service</a>
+          <a href="contact.html" class="px-6 py-3.5 rounded-full border border-background-300 hover:border-primary-400 text-foreground-700 hover:text-primary-700 text-sm font-semibold transition-colors">Ask a Question</a>
+        </div>
+      </div>
+      <div class="w-full aspect-[4/3] rounded-2xl overflow-hidden order-1 lg:order-2">
+        <img src="https://images.pexels.com/photos/6762317/pexels-photo-6762317.jpeg?auto=compress&cs=tinysrgb&w=1000&q=80" alt="Companionship" class="w-full h-full object-cover">
+      </div>
+    </div>
+
+    <div class="w-full h-px bg-background-200"></div>
+
+    <!-- 3. Errands & Daily Help -->
+    <div id="errands" class="scroll-mt-40 grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-12 items-center">
+      <div class="w-full aspect-[4/3] rounded-2xl overflow-hidden">
+        <img src="https://images.pexels.com/photos/7345427/pexels-photo-7345427.jpeg?auto=compress&cs=tinysrgb&w=1000&q=80" alt="Errands & Daily Help" class="w-full h-full object-cover">
+      </div>
+      <div>
+        <span class="inline-flex items-center gap-2 w-12 h-12 justify-center rounded-full bg-primary-100 text-primary-700 mb-6">
+          <i class="fa-solid fa-bag-shopping text-xl"></i>
+        </span>
+        <h2 class="font-heading text-3xl md:text-4xl font-medium text-foreground-950">Errands &amp; Daily Help</h2>
+        <p class="mt-5 text-base text-foreground-700 leading-relaxed">
+          The small things add up. Our caregivers handle the practical tasks of daily life so clients can conserve energy for what brings them joy — while their home stays organized, clean, and running smoothly.
+        </p>
+        <ul class="mt-6 space-y-3">
+          <li class="flex items-start gap-3 text-sm text-foreground-700"><i class="fa-solid fa-check text-primary-500 mt-0.5 shrink-0"></i> Grocery shopping and errand runs</li>
+          <li class="flex items-start gap-3 text-sm text-foreground-700"><i class="fa-solid fa-check text-primary-500 mt-0.5 shrink-0"></i> Prescription pickups and pharmacy visits</li>
+          <li class="flex items-start gap-3 text-sm text-foreground-700"><i class="fa-solid fa-check text-primary-500 mt-0.5 shrink-0"></i> Light housekeeping and laundry</li>
+          <li class="flex items-start gap-3 text-sm text-foreground-700"><i class="fa-solid fa-check text-primary-500 mt-0.5 shrink-0"></i> Transportation to appointments and events</li>
+          <li class="flex items-start gap-3 text-sm text-foreground-700"><i class="fa-solid fa-check text-primary-500 mt-0.5 shrink-0"></i> Mail, bill organization, and correspondence help</li>
+        </ul>
+        <div class="mt-8 flex items-center gap-4">
+          <a href="apply.html" class="px-6 py-3.5 rounded-full bg-primary-500 hover:bg-primary-600 text-white text-sm font-semibold transition-colors">Request This Service</a>
+          <a href="contact.html" class="px-6 py-3.5 rounded-full border border-background-300 hover:border-primary-400 text-foreground-700 hover:text-primary-700 text-sm font-semibold transition-colors">Ask a Question</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="w-full h-px bg-background-200"></div>
+
+    <!-- 4. Cooking & Grooming -->
+    <div id="cooking" class="scroll-mt-40 grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-12 items-center">
+      <div class="order-2 lg:order-1">
+        <span class="inline-flex items-center gap-2 w-12 h-12 justify-center rounded-full bg-primary-100 text-primary-700 mb-6">
+          <i class="fa-solid fa-utensils text-xl"></i>
+        </span>
+        <h2 class="font-heading text-3xl md:text-4xl font-medium text-foreground-950">Cooking &amp; Grooming</h2>
+        <p class="mt-5 text-base text-foreground-700 leading-relaxed">
+          Nutrition and personal hygiene are deeply connected to health and self-worth. Our caregivers prepare wholesome, home-cooked meals suited to each client's preferences and dietary needs — and assist with grooming routines that maintain dignity and comfort.
+        </p>
+        <ul class="mt-6 space-y-3">
+          <li class="flex items-start gap-3 text-sm text-foreground-700"><i class="fa-solid fa-check text-primary-500 mt-0.5 shrink-0"></i> Home-cooked breakfast, lunch, and dinner</li>
+          <li class="flex items-start gap-3 text-sm text-foreground-700"><i class="fa-solid fa-check text-primary-500 mt-0.5 shrink-0"></i> Diet-specific meal planning (diabetic, low-sodium, etc.)</li>
+          <li class="flex items-start gap-3 text-sm text-foreground-700"><i class="fa-solid fa-check text-primary-500 mt-0.5 shrink-0"></i> Gentle bathing and personal hygiene assistance</li>
+          <li class="flex items-start gap-3 text-sm text-foreground-700"><i class="fa-solid fa-check text-primary-500 mt-0.5 shrink-0"></i> Dressing, hair care, and oral hygiene</li>
+          <li class="flex items-start gap-3 text-sm text-foreground-700"><i class="fa-solid fa-check text-primary-500 mt-0.5 shrink-0"></i> Skin care and incontinence support</li>
+        </ul>
+        <div class="mt-8 flex items-center gap-4">
+          <a href="apply.html" class="px-6 py-3.5 rounded-full bg-primary-500 hover:bg-primary-600 text-white text-sm font-semibold transition-colors">Request This Service</a>
+          <a href="contact.html" class="px-6 py-3.5 rounded-full border border-background-300 hover:border-primary-400 text-foreground-700 hover:text-primary-700 text-sm font-semibold transition-colors">Ask a Question</a>
+        </div>
+      </div>
+      <div class="w-full aspect-[4/3] rounded-2xl overflow-hidden order-1 lg:order-2">
+        <img src="https://images.pexels.com/photos/8805508/pexels-photo-8805508.jpeg?auto=compress&cs=tinysrgb&w=1000&q=80" alt="Cooking & Grooming" class="w-full h-full object-cover">
+      </div>
+    </div>
+
+    <div class="w-full h-px bg-background-200"></div>
+
+    <!-- 5. STNA Care Support -->
+    <div id="stna" class="scroll-mt-40 grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-12 items-center">
+      <div class="w-full aspect-[4/3] rounded-2xl overflow-hidden">
+        <img src="https://images.pexels.com/photos/18459198/pexels-photo-18459198.jpeg?auto=compress&cs=tinysrgb&w=1000&q=80" alt="STNA Care Support" class="w-full h-full object-cover">
+      </div>
+      <div>
+        <span class="inline-flex items-center gap-2 w-12 h-12 justify-center rounded-full bg-primary-100 text-primary-700 mb-6">
+          <i class="fa-solid fa-stethoscope text-xl"></i>
+        </span>
+        <h2 class="font-heading text-3xl md:text-4xl font-medium text-foreground-950">State Tested Nursing Assistant Care</h2>
+        <p class="mt-5 text-base text-foreground-700 leading-relaxed">
+          Our State Tested Nursing Assistants (STNAs) bring clinical training and genuine compassion to clients who need more advanced personal and health-related care — all in the comfort and familiarity of home.
+        </p>
+        <div class="mt-5 p-4 rounded-xl bg-secondary-50 border border-secondary-200">
+          <p class="text-sm text-secondary-800 leading-relaxed">
+            <strong class="font-semibold">STNA in Ohio:</strong> The State Tested Nursing Assistant credential is Ohio's equivalent of the CNA (Certified Nursing Assistant) in other states. All our STNAs hold current Ohio STNA certification.
+          </p>
+        </div>
+        <ul class="mt-6 space-y-3">
+          <li class="flex items-start gap-3 text-sm text-foreground-700"><i class="fa-solid fa-check text-primary-500 mt-0.5 shrink-0"></i> Advanced personal care and hygiene assistance</li>
+          <li class="flex items-start gap-3 text-sm text-foreground-700"><i class="fa-solid fa-check text-primary-500 mt-0.5 shrink-0"></i> Vital sign monitoring and health observations</li>
+          <li class="flex items-start gap-3 text-sm text-foreground-700"><i class="fa-solid fa-check text-primary-500 mt-0.5 shrink-0"></i> Safe transfers, positioning, and mobility support</li>
+          <li class="flex items-start gap-3 text-sm text-foreground-700"><i class="fa-solid fa-check text-primary-500 mt-0.5 shrink-0"></i> Wound care observation and skin integrity monitoring</li>
+          <li class="flex items-start gap-3 text-sm text-foreground-700"><i class="fa-solid fa-check text-primary-500 mt-0.5 shrink-0"></i> Care plan coordination with healthcare providers</li>
+        </ul>
+        <div class="mt-8 flex items-center gap-4">
+          <a href="apply.html" class="px-6 py-3.5 rounded-full bg-primary-500 hover:bg-primary-600 text-white text-sm font-semibold transition-colors">Request This Service</a>
+          <a href="contact.html" class="px-6 py-3.5 rounded-full border border-background-300 hover:border-primary-400 text-foreground-700 hover:text-primary-700 text-sm font-semibold transition-colors">Ask a Question</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="w-full h-px bg-background-200"></div>
+
+    <!-- 6. Daily Living Assistance -->
+    <div id="daily" class="scroll-mt-40 grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-12 items-center">
+      <div class="order-2 lg:order-1">
+        <span class="inline-flex items-center gap-2 w-12 h-12 justify-center rounded-full bg-primary-100 text-primary-700 mb-6">
+          <i class="fa-solid fa-hand-holding-heart text-xl"></i>
+        </span>
+        <h2 class="font-heading text-3xl md:text-4xl font-medium text-foreground-950">Daily Living Assistance</h2>
+        <p class="mt-5 text-base text-foreground-700 leading-relaxed">
+          The activities of daily living — getting up, moving around, taking medications, staying active — can become challenging over time. Our caregivers provide gentle, respectful support that helps clients maintain their independence while staying safe.
+        </p>
+        <ul class="mt-6 space-y-3">
+          <li class="flex items-start gap-3 text-sm text-foreground-700"><i class="fa-solid fa-check text-primary-500 mt-0.5 shrink-0"></i> Mobility assistance and fall prevention</li>
+          <li class="flex items-start gap-3 text-sm text-foreground-700"><i class="fa-solid fa-check text-primary-500 mt-0.5 shrink-0"></i> Medication reminders (not administration)</li>
+          <li class="flex items-start gap-3 text-sm text-foreground-700"><i class="fa-solid fa-check text-primary-500 mt-0.5 shrink-0"></i> Gentle range-of-motion exercises</li>
+          <li class="flex items-start gap-3 text-sm text-foreground-700"><i class="fa-solid fa-check text-primary-500 mt-0.5 shrink-0"></i> Structured daily routines and schedules</li>
+          <li class="flex items-start gap-3 text-sm text-foreground-700"><i class="fa-solid fa-check text-primary-500 mt-0.5 shrink-0"></i> Cognitive engagement and memory activities</li>
+        </ul>
+        <div class="mt-8 flex items-center gap-4">
+          <a href="apply.html" class="px-6 py-3.5 rounded-full bg-primary-500 hover:bg-primary-600 text-white text-sm font-semibold transition-colors">Request This Service</a>
+          <a href="contact.html" class="px-6 py-3.5 rounded-full border border-background-300 hover:border-primary-400 text-foreground-700 hover:text-primary-700 text-sm font-semibold transition-colors">Ask a Question</a>
+        </div>
+      </div>
+      <div class="w-full aspect-[4/3] rounded-2xl overflow-hidden order-1 lg:order-2">
+        <img src="https://images.pexels.com/photos/33101000/pexels-photo-33101000.jpeg?auto=compress&cs=tinysrgb&w=1000&q=80" alt="Daily Living Assistance" class="w-full h-full object-cover">
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<!-- HOW IT WORKS -->
+<section class="bg-background-100 px-6 md:px-10 lg:px-14 py-20 md:py-28">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center max-w-2xl mx-auto mb-16">
+      <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary-100 text-primary-700 text-[11px] font-semibold uppercase tracking-[0.18em]">Getting started</span>
+      <h2 class="mt-5 font-heading text-4xl md:text-5xl font-light text-foreground-950 leading-tight">
+        Simple steps to bring care home.
+      </h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div class="text-center">
+        <div class="w-14 h-14 rounded-full bg-primary-500 text-white flex items-center justify-center text-xl font-heading font-bold mx-auto">1</div>
+        <h4 class="mt-5 font-heading text-xl font-medium text-foreground-950">Apply Online</h4>
+        <p class="mt-3 text-sm text-foreground-700 leading-relaxed">Fill out our simple care request form with details about your loved one's needs.</p>
+      </div>
+      <div class="text-center">
+        <div class="w-14 h-14 rounded-full bg-primary-500 text-white flex items-center justify-center text-xl font-heading font-bold mx-auto">2</div>
+        <h4 class="mt-5 font-heading text-xl font-medium text-foreground-950">We Reach Out</h4>
+        <p class="mt-3 text-sm text-foreground-700 leading-relaxed">Our team contacts you within one business day to discuss your situation and answer questions.</p>
+      </div>
+      <div class="text-center">
+        <div class="w-14 h-14 rounded-full bg-primary-500 text-white flex items-center justify-center text-xl font-heading font-bold mx-auto">3</div>
+        <h4 class="mt-5 font-heading text-xl font-medium text-foreground-950">Build a Care Plan</h4>
+        <p class="mt-3 text-sm text-foreground-700 leading-relaxed">Together we create a personalized care plan that fits your loved one's routine and needs.</p>
+      </div>
+      <div class="text-center">
+        <div class="w-14 h-14 rounded-full bg-primary-500 text-white flex items-center justify-center text-xl font-heading font-bold mx-auto">4</div>
+        <h4 class="mt-5 font-heading text-xl font-medium text-foreground-950">Care Begins</h4>
+        <p class="mt-3 text-sm text-foreground-700 leading-relaxed">Your matched caregiver arrives — on time, background-checked, and ready to make a difference.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="bg-background-50 px-4 md:px-6 pt-6 pb-10">
+  <div class="relative overflow-hidden rounded-3xl cta-section-bg text-background-50">
+    <div class="relative z-10 px-8 md:px-14 lg:px-20 py-16 md:py-20 flex flex-col md:flex-row items-center justify-between gap-8">
+      <div>
+        <h2 class="font-heading text-3xl md:text-4xl font-light leading-snug">
+          Ready to request a service?
+        </h2>
+        <p class="mt-3 text-background-100 text-base leading-relaxed max-w-xl">
+          Fill out a care request and we'll be in touch within one business day.
+        </p>
+      </div>
+      <div class="flex flex-col sm:flex-row gap-3 shrink-0">
+        <a href="apply.html" class="px-7 py-4 rounded-full bg-background-50 hover:bg-background-100 text-foreground-950 text-sm font-semibold transition-colors">Apply for Care</a>
+        <a href="contact.html" class="px-7 py-4 rounded-full bg-background-50/10 hover:bg-background-50/20 border border-background-50/30 text-background-50 text-sm font-semibold transition-colors">Contact Us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="px-4 md:px-6 pb-6 bg-background-50">
+  <div class="rounded-3xl bg-secondary-950 text-background-50 px-6 md:px-12 lg:px-16 py-12 md:py-16">
+    <div class="grid grid-cols-1 lg:grid-cols-[2fr_1fr_1.4fr] gap-10 lg:gap-14">
+      <div>
+        <div class="flex items-center gap-3 mb-5">
+          <img src="assets/logo.png" alt="Kindness Home Care Services LLC" class="h-10 w-auto">
+          <span class="font-heading text-lg font-semibold">Kindness Home Care</span>
+        </div>
+        <h3 class="font-heading text-3xl font-light leading-tight">Stay close to the kindness.</h3>
+        <p class="mt-4 text-sm text-background-300 max-w-md leading-relaxed">Monthly notes on caring for aging loved ones at home — gentle reminders, helpful resources, and stories from our families.</p>
+        <form id="newsletter-form" class="mt-8">
+          <div class="flex items-center gap-3 border-b border-background-700 pb-2">
+            <input required type="email" placeholder="your@email.com" class="flex-1 bg-transparent text-sm placeholder:text-background-500 text-background-50 focus:outline-none py-2">
+            <button type="submit" class="px-5 py-2.5 rounded-full bg-background-50 text-foreground-950 text-sm font-semibold flex items-center gap-2 hover:bg-background-100 transition-colors">Subscribe <i class="fa-solid fa-arrow-right"></i></button>
+          </div>
+          <p id="newsletter-success" class="hidden mt-3 text-sm text-primary-300"><i class="fa-solid fa-circle-check mr-1"></i> Thank you! You've been subscribed.</p>
+        </form>
+        <div class="mt-8 flex flex-wrap gap-2">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-background-50/8 text-background-400 text-[11px]">
+            <i class="fa-solid fa-shield-halved text-primary-400"></i> Liability Insured
+          </span>
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-background-50/8 text-background-400 text-[11px]">
+            <i class="fa-solid fa-certificate text-primary-400"></i> Bonded
+          </span>
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-background-50/8 text-background-400 text-[11px]">
+            <i class="fa-solid fa-user-shield text-primary-400"></i> Workers' Comp
+          </span>
+        </div>
+      </div>
+      <div>
+        <h4 class="text-xs uppercase tracking-[0.18em] text-background-400 font-semibold">Explore</h4>
+        <ul class="mt-5 space-y-3">
+          <li><a href="index.html"    class="text-sm text-background-100 hover:text-background-50 underline-offset-4 hover:underline">Home</a></li>
+          <li><a href="services.html" class="text-sm text-background-100 hover:text-background-50 underline-offset-4 hover:underline">Services</a></li>
+          <li><a href="apply.html"    class="text-sm text-background-100 hover:text-background-50 underline-offset-4 hover:underline">Apply for Care</a></li>
+          <li><a href="payment.html"  class="text-sm text-background-100 hover:text-background-50 underline-offset-4 hover:underline">Pay for Services</a></li>
+          <li><a href="about.html"    class="text-sm text-background-100 hover:text-background-50 underline-offset-4 hover:underline">About Us</a></li>
+          <li><a href="contact.html"  class="text-sm text-background-100 hover:text-background-50 underline-offset-4 hover:underline">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-xs uppercase tracking-[0.18em] text-background-400 font-semibold">Get in touch</h4>
+        <p class="mt-5 text-sm text-background-100"><a href="tel:+16145550199" class="hover:text-background-50">(614) 555-0199</a></p>
+        <p class="mt-2 text-sm text-background-100"><a href="mailto:care@kindnesshomecare.com" class="hover:text-background-50">care@kindnesshomecare.com</a></p>
+        <h4 class="mt-8 text-xs uppercase tracking-[0.18em] text-background-400 font-semibold">Office</h4>
+        <p class="mt-4 text-sm text-background-100 leading-relaxed">1248 Compassion Lane, Suite 200<br>Columbus, OH 43215</p>
+      </div>
+    </div>
+    <div class="mt-10 pt-6 border-t border-background-800 flex flex-col sm:flex-row items-center gap-4 justify-between">
+      <div class="flex items-center gap-5 text-sm">
+        <a href="https://facebook.com/"  target="_blank" rel="noopener" class="text-background-200 hover:text-background-50">Facebook</a>
+        <a href="https://instagram.com/" target="_blank" rel="noopener" class="text-background-200 hover:text-background-50">Instagram</a>
+        <a href="https://linkedin.com/"  target="_blank" rel="noopener" class="text-background-200 hover:text-background-50">LinkedIn</a>
+      </div>
+      <p class="text-xs text-background-400">© 2026 Kindness Home Care Services LLC. All rights reserved.</p>
+      <div class="flex items-center gap-4 text-xs">
+        <a href="privacy.html" class="text-background-300 hover:text-background-50">Privacy</a>
+        <a href="terms.html"   class="text-background-300 hover:text-background-50">Terms</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>
