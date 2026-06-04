@@ -28,6 +28,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initFileUploads();
   initFaq();
   initSmoothScroll();
+  initServiceNav();
+  initCookieBanner();
 });
 
 function initHeader() {
@@ -454,6 +456,72 @@ function initFaq() {
       }
     });
   });
+}
+
+function initCookieBanner() {
+  const banner = document.getElementById('cookie-banner');
+  if (!banner) return;
+
+  if (!localStorage.getItem('cookie-consent')) {
+    setTimeout(() => banner.classList.remove('hidden'), 800);
+  }
+
+  document.getElementById('cookie-accept')?.addEventListener('click', () => {
+    localStorage.setItem('cookie-consent', 'accepted');
+    banner.classList.add('hiding');
+    setTimeout(() => banner.classList.add('hidden'), 400);
+  });
+
+  document.getElementById('cookie-decline')?.addEventListener('click', () => {
+    localStorage.setItem('cookie-consent', 'essential');
+    banner.classList.add('hiding');
+    setTimeout(() => banner.classList.add('hidden'), 400);
+  });
+}
+
+function initServiceNav() {
+  const nav = document.querySelector('nav .no-scrollbar, .no-scrollbar');
+  if (!nav) return;
+
+  const links = Array.from(nav.querySelectorAll('a[href^="#"]'));
+  if (!links.length) return;
+
+  const activeClasses    = ['bg-primary-500', 'text-white'];
+  const inactiveClasses  = ['bg-background-50', 'border', 'border-background-200', 'text-foreground-700', 'hover:border-primary-400', 'hover:text-primary-700'];
+
+  function setActive(link) {
+    links.forEach((l) => {
+      l.classList.remove(...activeClasses);
+      l.classList.add(...inactiveClasses);
+    });
+    link.classList.remove(...inactiveClasses);
+    link.classList.add(...activeClasses);
+    link.scrollIntoView({ inline: 'nearest', block: 'nearest' });
+  }
+
+  links.forEach((link) => {
+    link.addEventListener('click', () => setActive(link));
+  });
+
+  const sections = links
+    .map((l) => document.querySelector(l.getAttribute('href')))
+    .filter(Boolean);
+
+  if (!sections.length) return;
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const match = links.find((l) => l.getAttribute('href') === `#${entry.target.id}`);
+          if (match) setActive(match);
+        }
+      });
+    },
+    { rootMargin: '-30% 0px -60% 0px', threshold: 0 }
+  );
+
+  sections.forEach((s) => observer.observe(s));
 }
 
 function initSmoothScroll() {
