@@ -102,12 +102,21 @@ body {
   color: #A08608 !important;
 }
 
+/* Hamburger: white on transparent header, dark when scrolled */
+#menu-toggle {
+  color: #FAF9F7;
+}
+
+#menu-toggle:hover {
+  background-color: rgba(250, 249, 247, 0.10);
+}
+
 #site-header.scrolled #menu-toggle {
-  color: #383E3C !important;
+  color: #262A28;
 }
 
 #site-header.scrolled #menu-toggle:hover {
-  background-color: rgba(56, 62, 60, 0.08) !important;
+  background-color: rgba(38, 42, 40, 0.08);
 }
 
 #site-header.scrolled .logo-text {
