@@ -1,5 +1,14 @@
 const SPREADSHEET_ID = '1iBDwjpMpb_Ju9MBT-B_tz7tmWXafEOrqhdBkraYxRYI';
 const MINIMUM_SUBMISSION_TIME_MS = 2500;
+const MAX_FIELDS_PER_FORM = 50;
+const MAX_LABEL_LENGTH = 120;
+const MAX_VALUE_LENGTH = 5000;
+const MAX_FILE_SIZE_BYTES = 5 * 1024 * 1024;
+const ALLOWED_RESUME_TYPES = [
+  'application/pdf',
+  'application/msword',
+  'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+];
 
 const FORM_SHEETS = {
   'newsletter-form': {
@@ -96,6 +105,57 @@ const FORM_SHEETS = {
   }
 };
 
+const REQUIRED_FIELDS = {
+  'newsletter-form': ['Email'],
+  'contact-form': ['Your Name', 'Your Email', 'Subject', 'Message'],
+  'care-form': [
+    "Client's Full Name",
+    "Client's Home Address",
+    'City',
+    'ZIP Code',
+    'Services Needed',
+    'Your Full Name',
+    'Your Phone',
+    'Your Email'
+  ],
+  'join-form': [
+    'First Name',
+    'Last Name',
+    'Phone Number',
+    'Email Address',
+    'Street Address',
+    'City',
+    'ZIP Code',
+    'Position of Interest',
+    'Employment Type',
+    'Earliest Available Start Date',
+    'I consent to a background check as part of the hiring process.'
+  ]
+};
+
+const EMAIL_FIELDS = [
+  'Email',
+  'Your Email',
+  'Email Address',
+  'Professional Reference 1 - Email address',
+  'Professional Reference 2 - Email address'
+];
+
+const PHONE_FIELDS = [
+  'Your Phone',
+  'Phone Number',
+  'Emergency Contact Phone',
+  'Professional Reference 1 - Phone number',
+  'Professional Reference 2 - Phone number',
+  'Physician Phone'
+];
+
+const FIELD_ALIASES = {
+  'newsletter-form': {
+    'your@email.com': 'Email'
+  }
+};
+
 function doGet() {
   return jsonResponse_({
     ok: true,
@@ -129,11 +189,11 @@ function saveSubmission_(payload) {
     throw new Error('Unknown form ID: ' + formId);
   }
 
-  validateSubmission_(payload);
+  validateSubmission_(payload, formConfig);
 
   const spreadsheet = SpreadsheetApp.openById(SPREADSHEET_ID);
   const sheet = getOrCreateSheet_(spreadsheet, formConfig.name);
-  const fields = normalizeFields_(payload.fields);
+  const fields = canonicalizeFields_(payload.formId, normalizeFields_(payload.fields));
   const uploadedFile = saveFileIfPresent_(payload.fileUpload);
 
   ensureHeaders_(sheet, formConfig.headers);
@@ -226,6 +286,18 @@ function dedupeLabel_(existingFields, label) {
   return candidate;
 }
 
+function canonicalizeFields_(formId, fields) {
+  const aliases = FIELD_ALIASES[formId] || {};
+  const canonical = {};
+
+  Object.keys(fields).forEach(function(label) {
+    const normalizedLabel = aliases[label] || label;
+    canonical[normalizedLabel] = fields[label];
+  });
+
+  return canonical;
+}
+
 function getField_(fields, key) {
   return fields[key] || '';
 }
@@ -258,8 +330,14 @@ function saveFileIfPresent_(fileUpload) {
   };
 }
 
-function validateSubmission_(payload) {
+function validateSubmission_(payload, formConfig) {
   const antiSpam = payload.antiSpam || {};
+  const fields = canonicalizeFields_(payload.formId, normalizeFields_(payload.fields));
+  const allowedFields = new Set(formConfig.headers.filter(function(header) {
+    return header !== 'Submitted At' &&
+      header !== 'Resume File Name' &&
+      header !== 'Resume File URL';
+  }));
 
   if (antiSpam.honeypotFilled) {
     throw new Error('Spam check failed.');
@@ -268,6 +346,83 @@ function validateSubmission_(payload) {
   if (antiSpam.elapsedMs && Number(antiSpam.elapsedMs) < MINIMUM_SUBMISSION_TIME_MS) {
     throw new Error('Submission was sent too quickly.');
   }
+
+  if (!payload || typeof payload !== 'object') {
+    throw new Error('Invalid submission payload.');
+  }
+
+  if (!Array.isArray(payload.fields)) {
+    throw new Error('Submission fields are missing.');
+  }
+
+  if (payload.fields.length > MAX_FIELDS_PER_FORM) {
+    throw new Error('Too many submitted fields.');
+  }
+
+  Object.keys(fields).forEach(function(label) {
+    if (!allowedFields.has(label)) {
+      throw new Error('Unexpected field submitted: ' + label);
+    }
+
+    if (label.length > MAX_LABEL_LENGTH) {
+      throw new Error('A field label is too long.');
+    }
+
+    if (String(fields[label]).length > MAX_VALUE_LENGTH) {
+      throw new Error('A submitted value is too long.');
+    }
+  });
+
+  (REQUIRED_FIELDS[payload.formId] || []).forEach(function(label) {
+    if (!getField_(fields, label)) {
+      throw new Error('Missing required field: ' + label);
+    }
+  });
+
+  EMAIL_FIELDS.forEach(function(label) {
+    const value = getField_(fields, label);
+    if (value && !isValidEmail_(value)) {
+      throw new Error('Invalid email address in ' + label + '.');
+    }
+  });
+
+  PHONE_FIELDS.forEach(function(label) {
+    const value = getField_(fields, label);
+    if (value && !isValidPhone_(value)) {
+      throw new Error('Invalid phone number in ' + label + '.');
+    }
+  });
+
+  if (payload.formId === 'join-form' && !payload.fileUpload) {
+    throw new Error('Resume upload is required.');
+  }
+
+  if (payload.fileUpload) {
+    validateFileUpload_(payload.fileUpload, payload.formId);
+  }
+}
+
+function validateFileUpload_(fileUpload, formId) {
+  if (!fileUpload.name || !fileUpload.base64) {
+    throw new Error('Uploaded file is incomplete.');
+  }
+
+  if (fileUpload.size && Number(fileUpload.size) > MAX_FILE_SIZE_BYTES) {
+    throw new Error('Uploaded file is too large.');
+  }
+
+  if (formId === 'join-form' && ALLOWED_RESUME_TYPES.indexOf(fileUpload.mimeType || '') === -1) {
+    throw new Error('Resume must be a PDF, DOC, or DOCX file.');
+  }
+}
+
+function isValidEmail_(value) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(value).trim());
+}
+
+function isValidPhone_(value) {
+  const digits = String(value).replace(/\D/g, '');
+  return digits.length >= 7 && digits.length <= 15;
 }
 
 function jsonResponse_(data) {

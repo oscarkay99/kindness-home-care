@@ -7,6 +7,44 @@ const googleSheetsEndpoint = formsConfig.googleSheetsEndpoint || '';
 const minimumSubmissionTimeMs = 2500;
 const honeypotFieldName = 'website_company';
 const startedAtFieldName = 'form_started_at';
+const maxResumeFileSizeBytes = 5 * 1024 * 1024;
+const allowedResumeMimeTypes = new Set([
+  'application/pdf',
+  'application/msword',
+  'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+]);
+const requiredFieldsByForm = {
+  'newsletter-form': ['Email'],
+  'contact-form': ['Your Name', 'Your Email', 'Subject', 'Message'],
+  'care-form': [
+    "Client's Full Name",
+    "Client's Home Address",
+    'City',
+    'ZIP Code',
+    'Services Needed',
+    'Your Full Name',
+    'Your Phone',
+    'Your Email'
+  ],
+  'join-form': [
+    'First Name',
+    'Last Name',
+    'Phone Number',
+    'Email Address',
+    'Street Address',
+    'City',
+    'ZIP Code',
+    'Position of Interest',
+    'Employment Type',
+    'Earliest Available Start Date',
+    'I consent to a background check as part of the hiring process.'
+  ]
+};
+const fieldAliasesByForm = {
+  'newsletter-form': {
+    'your@email.com': 'Email'
+  }
+};
 
 const formTitles = {
   'newsletter-form': 'Newsletter Signup',
@@ -173,14 +211,25 @@ async function submitFormPayload(form, formId) {
     payload: JSON.stringify(payload)
   });
 
-  await fetch(googleSheetsEndpoint, {
+  const response = await fetch(googleSheetsEndpoint, {
     method: 'POST',
-    mode: 'no-cors',
+    mode: 'cors',
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
     },
     body: requestBody.toString()
   });
+
+  let result = null;
+  try {
+    result = await response.json();
+  } catch (error) {
+    throw new Error('We could not verify your submission. Please try again.');
+  }
+
+  if (!response.ok || !result || result.ok !== true) {
+    throw new Error((result && result.error) || 'We could not submit your form right now.');
+  }
 }
 
 async function buildSubmissionPayload(form, formId) {
@@ -193,6 +242,11 @@ async function buildSubmissionPayload(form, formId) {
     throw new Error('Please wait a moment and try again.');
   }
 
+  const fields = collectFormFields(form);
+  const fileUpload = await readFormFile(form);
+
+  validateSubmissionPayload(formId, fields, fileUpload);
+
   return {
     formId,
     formTitle: formTitles[formId] || 'Website Submission',
@@ -201,9 +255,57 @@ async function buildSubmissionPayload(form, formId) {
     submittedAt: new Date().toISOString(),
     userAgent: navigator.userAgent,
     antiSpam,
-    fields: collectFormFields(form),
-    fileUpload: await readFormFile(form)
+    fields,
+    fileUpload
   };
+}
+
+function validateSubmissionPayload(formId, fields, fileUpload) {
+  const fieldAliases = fieldAliasesByForm[formId] || {};
+  const fieldMap = Object.fromEntries(fields.map((field) => [fieldAliases[field.label] || field.label, field.value]));
+
+  (requiredFieldsByForm[formId] || []).forEach((label) => {
+    if (!String(fieldMap[label] || '').trim()) {
+      throw new Error(`Please complete the "${label}" field.`);
+    }
+  });
+
+  ['Email', 'Your Email', 'Email Address'].forEach((label) => {
+    const value = fieldMap[label];
+    if (value && !isValidEmail(value)) {
+      throw new Error(`Please enter a valid email for "${label}".`);
+    }
+  });
+
+  ['Your Phone', 'Phone Number', 'Emergency Contact Phone', 'Physician Phone'].forEach((label) => {
+    const value = fieldMap[label];
+    if (value && !isValidPhone(value)) {
+      throw new Error(`Please enter a valid phone number for "${label}".`);
+    }
+  });
+
+  if (formId === 'join-form') {
+    if (!fileUpload) {
+      throw new Error('Please upload your resume.');
+    }
+
+    if (fileUpload.size > maxResumeFileSizeBytes) {
+      throw new Error('Resume must be 5 MB or smaller.');
+    }
+
+    if (!allowedResumeMimeTypes.has(fileUpload.mimeType)) {
+      throw new Error('Resume must be a PDF, DOC, or DOCX file.');
+    }
+  }
+}
+
+function isValidEmail(value) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(value).trim());
+}
+
+function isValidPhone(value) {
+  const digits = String(value).replace(/\D/g, '');
+  return digits.length >= 7 && digits.length <= 15;
 }
 
 function initFormProtection() {
