@@ -291,7 +291,11 @@ function deriveChoiceLabel(control) {
 }
 
 function cleanLabelText(text) {
-  return text.replace(/\*/g, '').replace(/\s+/g, ' ').trim();
+  return text
+    .replace(/\*/g, '')
+    .replace(/\s*\([^)]*\)/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
 }
 
 async function readFormFile(form) {
