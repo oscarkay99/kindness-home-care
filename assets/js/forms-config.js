@@ -1,4 +1,4 @@
 window.KINDNESS_FORMS_CONFIG = {
   // Paste your deployed Google Apps Script web app URL here.
-  googleSheetsEndpoint: 'https://script.google.com/macros/s/AKfycbwkqzXsn360mySw5DZc9FCV1sbwXdspX3LSY1e4qVgZU9b8HmSBM06opLpPEq3P9Xld/exec'
+  googleSheetsEndpoint: 'https://script.google.com/macros/s/AKfycbyX5MWMIxzyX_8Z28xb2OSBo4EqIFKtcRB_ZQ3yfVmO1BEj_MBHFCC84B1wBUIr3Vw/exec'
 };
