@@ -102,6 +102,14 @@ body {
   color: #A08608 !important;
 }
 
+#site-header.scrolled #menu-toggle {
+  color: #383E3C !important;
+}
+
+#site-header.scrolled #menu-toggle:hover {
+  background-color: rgba(56, 62, 60, 0.08) !important;
+}
+
 #site-header.scrolled .logo-text {
   color: #141A18 !important;
 }
