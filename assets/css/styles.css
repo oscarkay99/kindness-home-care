@@ -292,6 +292,25 @@ textarea.form-field {
   gap: 12px;
 }
 
+.form-feedback {
+  margin-top: 16px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.form-feedback.error {
+  color: #B42318;
+}
+
+.form-feedback.success {
+  color: #0A6058;
+}
+
+button.is-submitting {
+  opacity: 0.78;
+  cursor: wait;
+}
+
 /* ── Scroll indicator ── */
 .scroll-indicator {
   position: absolute;
