@@ -4,6 +4,9 @@
 
 const formsConfig = window.KINDNESS_FORMS_CONFIG || {};
 const googleSheetsEndpoint = formsConfig.googleSheetsEndpoint || '';
+const minimumSubmissionTimeMs = 2500;
+const honeypotFieldName = 'website_company';
+const startedAtFieldName = 'form_started_at';
 
 const formTitles = {
   'newsletter-form': 'Newsletter Signup',
@@ -22,6 +25,7 @@ const successMessages = {
 document.addEventListener('DOMContentLoaded', () => {
   initHeader();
   initMobileMenu();
+  initFormProtection();
   initNewsletterForms();
   initApplyTabs();
   initManagedForms();
@@ -180,6 +184,15 @@ async function submitFormPayload(form, formId) {
 }
 
 async function buildSubmissionPayload(form, formId) {
+  const antiSpam = readAntiSpamState(form);
+  if (antiSpam.honeypotFilled) {
+    throw new Error('Submission blocked.');
+  }
+
+  if (antiSpam.elapsedMs < minimumSubmissionTimeMs) {
+    throw new Error('Please wait a moment and try again.');
+  }
+
   return {
     formId,
     formTitle: formTitles[formId] || 'Website Submission',
@@ -187,8 +200,56 @@ async function buildSubmissionPayload(form, formId) {
     pageUrl: window.location.href,
     submittedAt: new Date().toISOString(),
     userAgent: navigator.userAgent,
+    antiSpam,
     fields: collectFormFields(form),
     fileUpload: await readFormFile(form)
+  };
+}
+
+function initFormProtection() {
+  document.querySelectorAll('form').forEach((form) => {
+    injectAntiSpamFields(form);
+  });
+}
+
+function injectAntiSpamFields(form) {
+  if (!form.querySelector(`input[name="${startedAtFieldName}"]`)) {
+    const startedField = document.createElement('input');
+    startedField.type = 'hidden';
+    startedField.name = startedAtFieldName;
+    startedField.value = String(Date.now());
+    form.appendChild(startedField);
+  }
+
+  if (!form.querySelector(`input[name="${honeypotFieldName}"]`)) {
+    const honeypotWrap = document.createElement('div');
+    honeypotWrap.className = 'spam-trap';
+    honeypotWrap.setAttribute('aria-hidden', 'true');
+
+    const honeypotLabel = document.createElement('label');
+    honeypotLabel.textContent = 'Company';
+
+    const honeypotInput = document.createElement('input');
+    honeypotInput.type = 'text';
+    honeypotInput.name = honeypotFieldName;
+    honeypotInput.tabIndex = -1;
+    honeypotInput.autocomplete = 'off';
+
+    honeypotLabel.appendChild(honeypotInput);
+    honeypotWrap.appendChild(honeypotLabel);
+    form.appendChild(honeypotWrap);
+  }
+}
+
+function readAntiSpamState(form) {
+  const startedField = form.querySelector(`input[name="${startedAtFieldName}"]`);
+  const honeypotField = form.querySelector(`input[name="${honeypotFieldName}"]`);
+  const startedAt = startedField ? Number(startedField.value || 0) : 0;
+
+  return {
+    startedAt,
+    elapsedMs: startedAt ? Date.now() - startedAt : 0,
+    honeypotFilled: Boolean(honeypotField && honeypotField.value.trim())
   };
 }
 

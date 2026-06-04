@@ -327,6 +327,14 @@ button.is-submitting {
   cursor: wait;
 }
 
+.spam-trap {
+  position: absolute !important;
+  left: -9999px !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+}
+
 /* ── Scroll indicator ── */
 .scroll-indicator {
   position: absolute;
