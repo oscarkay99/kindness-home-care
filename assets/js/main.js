@@ -188,6 +188,15 @@ const dateFieldRules = {
   'Earliest Available Start Date': 'future-or-today',
   'STNA License Expiration Date': 'future-or-today'
 };
+const multiLineFields = new Set([
+  'Message',
+  'Medical Conditions or Special Needs',
+  'Anything else we should know?',
+  'If yes, please explain',
+  'Why do you want to work with Kindness Home Care Services?',
+  'Describe your experience caring for elderly or disabled individuals.',
+  "Is there anything else you'd like us to know?"
+]);
 
 const formTitles = {
   'newsletter-form': 'Newsletter Signup',
@@ -385,7 +394,7 @@ async function buildSubmissionPayload(form, formId) {
     throw new Error('Please wait a moment and try again.');
   }
 
-  const fields = collectFormFields(form);
+  const fields = sanitizeFields(collectFormFields(form));
   const fileUpload = await readFormFile(form);
 
   validateSubmissionPayload(formId, fields, fileUpload);
@@ -506,6 +515,39 @@ function isValidDateValue(value, rule) {
   }
 
   return true;
+}
+
+function sanitizeFields(fields) {
+  return fields.map((field) => ({
+    label: sanitizeLabel(field.label),
+    value: sanitizeValue(field.label, field.value)
+  }));
+}
+
+function sanitizeLabel(label) {
+  return String(label || '')
+    .replace(/[\u0000-\u001F\u007F]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function sanitizeValue(label, value) {
+  const normalizedLabel = sanitizeLabel(label);
+  const stringValue = String(value || '').replace(/\r\n/g, '\n').replace(/\r/g, '\n');
+  const withoutControls = stringValue.replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/g, '');
+  const collapsedWhitespace = multiLineFields.has(normalizedLabel)
+    ? withoutControls.replace(/\n{3,}/g, '\n\n').replace(/[ \t]+/g, ' ').trim()
+    : withoutControls.replace(/\s+/g, ' ').trim();
+
+  return neutralizeSpreadsheetFormula(collapsedWhitespace);
+}
+
+function neutralizeSpreadsheetFormula(value) {
+  if (!value) {
+    return '';
+  }
+
+  return /^[=+\-@]/.test(value) ? `'${value}` : value;
 }
 
 function initFormProtection() {

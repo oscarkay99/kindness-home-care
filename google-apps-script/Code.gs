@@ -302,6 +302,16 @@ const DATE_FIELD_RULES = {
   'STNA License Expiration Date': 'future-or-today'
 };
 
+const MULTI_LINE_FIELDS = {
+  'Message': true,
+  'Medical Conditions or Special Needs': true,
+  'Anything else we should know?': true,
+  'If yes, please explain': true,
+  'Why do you want to work with Kindness Home Care Services?': true,
+  'Describe your experience caring for elderly or disabled individuals.': true,
+  "Is there anything else you'd like us to know?": true
+};
+
 function doGet() {
   return jsonResponse_({
     ok: true,
@@ -408,9 +418,9 @@ function normalizeFields_(fields) {
   const normalized = {};
 
   fields.forEach(function(field, index) {
-    const rawLabel = field && field.label ? String(field.label) : 'Field ' + (index + 1);
+    const rawLabel = field && field.label ? sanitizeLabel_(field.label) : 'Field ' + (index + 1);
     const label = dedupeLabel_(normalized, rawLabel);
-    normalized[label] = field && field.value ? String(field.value) : '';
+    normalized[label] = field && field.value ? sanitizeValue_(label, field.value) : '';
   });
 
   return normalized;
@@ -624,6 +634,32 @@ function isValidDateValue_(value, rule) {
   }
 
   return true;
+}
+
+function sanitizeLabel_(label) {
+  return String(label || '')
+    .replace(/[\u0000-\u001F\u007F]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function sanitizeValue_(label, value) {
+  const normalizedLabel = sanitizeLabel_(label);
+  const stringValue = String(value || '').replace(/\r\n/g, '\n').replace(/\r/g, '\n');
+  const withoutControls = stringValue.replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/g, '');
+  const collapsedWhitespace = MULTI_LINE_FIELDS[normalizedLabel]
+    ? withoutControls.replace(/\n{3,}/g, '\n\n').replace(/[ \t]+/g, ' ').trim()
+    : withoutControls.replace(/\s+/g, ' ').trim();
+
+  return neutralizeSpreadsheetFormula_(collapsedWhitespace);
+}
+
+function neutralizeSpreadsheetFormula_(value) {
+  if (!value) {
+    return '';
+  }
+
+  return /^[=+\-@]/.test(value) ? "'" + value : value;
 }
 
 function jsonResponse_(data) {
