@@ -156,6 +156,152 @@ const FIELD_ALIASES = {
   }
 };
 
+const ENUM_FIELDS = {
+  'contact-form': {
+    'Subject': [
+      'Requesting care for a loved one',
+      'Caregiver job application',
+      'Pricing and payment question',
+      'Insurance / Certificate of Insurance',
+      'Service agreement question',
+      'General inquiry',
+      'Feedback or complaint',
+      'Other'
+    ],
+    'Best way to reach you': ['Email', 'Phone call', 'Text message']
+  },
+  'care-form': {
+    "Client's Living Situation": [
+      'Lives alone',
+      'Lives with family member(s)',
+      'Lives with spouse/partner',
+      'Other'
+    ],
+    'Services Needed': [
+      '24-Hour Live-In Care',
+      'Companionship',
+      'Errands & Transportation',
+      'Meal Preparation',
+      'Grooming & Personal Care',
+      'Light Housekeeping',
+      'Medication Reminders',
+      'Respite Care for Families',
+      'Home Health Aide (HHA)',
+      'STNA Care Support',
+      'Personal Care'
+    ],
+    'Estimated Hours of Care Per Week': [
+      'Less than 10 hours',
+      '10–20 hours',
+      '20–40 hours',
+      'Full-time (40+ hours)',
+      '24/7 Live-In'
+    ],
+    'Your Relationship to Client': [
+      'Son / Daughter',
+      'Spouse / Partner',
+      'Sibling',
+      'Parent',
+      'Friend',
+      'Legal Guardian',
+      'The client (self)',
+      'Other'
+    ],
+    'Best Time to Reach You': [
+      'Morning (8 AM – 12 PM)',
+      'Afternoon (12 PM – 5 PM)',
+      'Evening (5 PM – 8 PM)',
+      'Any time'
+    ],
+    'How did you hear about us?': [
+      'Google / Internet search',
+      'Referred by a friend or family',
+      'Hospital / Healthcare provider',
+      'Social media',
+      'Flyer / Mailer',
+      'Other'
+    ]
+  },
+  'join-form': {
+    'Position of Interest': [
+      'Caregiver / Home Health Aide',
+      'STNA (State Tested Nursing Assistant)',
+      'Companion Care Aide',
+      'Live-In Caregiver',
+      'Administrative / Office Support'
+    ],
+    'Employment Type': [
+      'Full-time (40 hrs/week)',
+      'Part-time (under 30 hrs/week)',
+      'Per Diem / As Needed',
+      'Live-In'
+    ],
+    'Desired Weekly Hours': [
+      'Under 10 hours',
+      '10–20 hours',
+      '20–30 hours',
+      '30–40 hours',
+      '40+ hours'
+    ],
+    'Available Days': [
+      'Monday',
+      'Tuesday',
+      'Wednesday',
+      'Thursday',
+      'Friday',
+      'Saturday',
+      'Sunday'
+    ],
+    'Available Shifts': [
+      'Morning (6 AM – 2 PM)',
+      'Afternoon (2 PM – 10 PM)',
+      'Overnight (10 PM – 6 AM)',
+      'Flexible / Open'
+    ],
+    'Highest Education Level': [
+      'High School Diploma / GED',
+      'Some College',
+      "Associate's Degree",
+      "Bachelor's Degree",
+      'Graduate Degree'
+    ],
+    'Years of Caregiving / Healthcare Experience': [
+      'Less than 1 year',
+      '1–2 years',
+      '3–5 years',
+      '5–10 years',
+      '10+ years'
+    ],
+    'Certifications Held': [
+      'STNA (Ohio)',
+      'CPR / First Aid',
+      'CNA',
+      'Home Health Aide (HHA)',
+      "Alzheimer's / Dementia Care",
+      'Other'
+    ],
+    "Valid Driver's License?": ['Yes', 'No'],
+    'Reliable Transportation?': ['Yes', 'No'],
+    'Legally authorized to work in the US?': ['Yes', 'No'],
+    'Have you ever been convicted of a felony or misdemeanor?': ['Yes', 'No']
+  }
+};
+
+const MULTI_VALUE_ENUM_FIELDS = {
+  'Services Needed': true,
+  'Available Days': true,
+  'Available Shifts': true,
+  'Certifications Held': true
+};
+
+const DATE_FIELD_RULES = {
+  "Client's Date of Birth": 'past-or-today',
+  'Desired Care Start Date': 'future-or-today',
+  'Date of Birth': 'past-or-today',
+  'Earliest Available Start Date': 'future-or-today',
+  'STNA License Expiration Date': 'future-or-today'
+};
+
 function doGet() {
   return jsonResponse_({
     ok: true,
@@ -333,6 +479,7 @@ function saveFileIfPresent_(fileUpload) {
 function validateSubmission_(payload, formConfig) {
   const antiSpam = payload.antiSpam || {};
   const fields = canonicalizeFields_(payload.formId, normalizeFields_(payload.fields));
+  const enumFields = ENUM_FIELDS[payload.formId] || {};
   const allowedFields = new Set(formConfig.headers.filter(function(header) {
     return header !== 'Submitted At' &&
       header !== 'Resume File Name' &&
@@ -393,6 +540,32 @@ function validateSubmission_(payload, formConfig) {
     }
   });
 
+  Object.keys(enumFields).forEach(function(label) {
+    const value = getField_(fields, label);
+    if (!value) {
+      return;
+    }
+
+    const submittedValues = MULTI_VALUE_ENUM_FIELDS[label]
+      ? String(value).split(',').map(function(entry) { return entry.trim(); }).filter(Boolean)
+      : [String(value).trim()];
+
+    const hasInvalidValue = submittedValues.some(function(submittedValue) {
+      return enumFields[label].indexOf(submittedValue) === -1;
+    });
+
+    if (hasInvalidValue) {
+      throw new Error('Invalid option submitted for ' + label + '.');
+    }
+  });
+
+  Object.keys(DATE_FIELD_RULES).forEach(function(label) {
+    const value = getField_(fields, label);
+    if (value && !isValidDateValue_(value, DATE_FIELD_RULES[label])) {
+      throw new Error('Invalid date submitted for ' + label + '.');
+    }
+  });
+
   if (payload.formId === 'join-form' && !payload.fileUpload) {
     throw new Error('Resume upload is required.');
   }
@@ -423,6 +596,34 @@ function isValidEmail_(value) {
 function isValidPhone_(value) {
   const digits = String(value).replace(/\D/g, '');
   return digits.length >= 7 && digits.length <= 15;
+}
+
+function isValidDateValue_(value, rule) {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(String(value).trim())) {
+    return false;
+  }
+
+  const date = new Date(value + 'T00:00:00');
+  if (isNaN(date.getTime())) {
+    return false;
+  }
+
+  if (date.toISOString().slice(0, 10) !== value) {
+    return false;
+  }
+
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  if (rule === 'past-or-today') {
+    return date <= today;
+  }
+
+  if (rule === 'future-or-today') {
+    return date >= today;
+  }
+
+  return true;
 }
 
 function jsonResponse_(data) {

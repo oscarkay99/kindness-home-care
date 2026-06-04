@@ -45,6 +45,149 @@ const fieldAliasesByForm = {
     'your@email.com': 'Email'
   }
 };
+const enumFieldsByForm = {
+  'contact-form': {
+    'Subject': [
+      'Requesting care for a loved one',
+      'Caregiver job application',
+      'Pricing and payment question',
+      'Insurance / Certificate of Insurance',
+      'Service agreement question',
+      'General inquiry',
+      'Feedback or complaint',
+      'Other'
+    ],
+    'Best way to reach you': ['Email', 'Phone call', 'Text message']
+  },
+  'care-form': {
+    "Client's Living Situation": [
+      'Lives alone',
+      'Lives with family member(s)',
+      'Lives with spouse/partner',
+      'Other'
+    ],
+    'Services Needed': [
+      '24-Hour Live-In Care',
+      'Companionship',
+      'Errands & Transportation',
+      'Meal Preparation',
+      'Grooming & Personal Care',
+      'Light Housekeeping',
+      'Medication Reminders',
+      'Respite Care for Families',
+      'Home Health Aide (HHA)',
+      'STNA Care Support',
+      'Personal Care'
+    ],
+    'Estimated Hours of Care Per Week': [
+      'Less than 10 hours',
+      '10–20 hours',
+      '20–40 hours',
+      'Full-time (40+ hours)',
+      '24/7 Live-In'
+    ],
+    'Your Relationship to Client': [
+      'Son / Daughter',
+      'Spouse / Partner',
+      'Sibling',
+      'Parent',
+      'Friend',
+      'Legal Guardian',
+      'The client (self)',
+      'Other'
+    ],
+    'Best Time to Reach You': [
+      'Morning (8 AM – 12 PM)',
+      'Afternoon (12 PM – 5 PM)',
+      'Evening (5 PM – 8 PM)',
+      'Any time'
+    ],
+    'How did you hear about us?': [
+      'Google / Internet search',
+      'Referred by a friend or family',
+      'Hospital / Healthcare provider',
+      'Social media',
+      'Flyer / Mailer',
+      'Other'
+    ]
+  },
+  'join-form': {
+    'Position of Interest': [
+      'Caregiver / Home Health Aide',
+      'STNA (State Tested Nursing Assistant)',
+      'Companion Care Aide',
+      'Live-In Caregiver',
+      'Administrative / Office Support'
+    ],
+    'Employment Type': [
+      'Full-time (40 hrs/week)',
+      'Part-time (under 30 hrs/week)',
+      'Per Diem / As Needed',
+      'Live-In'
+    ],
+    'Desired Weekly Hours': [
+      'Under 10 hours',
+      '10–20 hours',
+      '20–30 hours',
+      '30–40 hours',
+      '40+ hours'
+    ],
+    'Available Days': [
+      'Monday',
+      'Tuesday',
+      'Wednesday',
+      'Thursday',
+      'Friday',
+      'Saturday',
+      'Sunday'
+    ],
+    'Available Shifts': [
+      'Morning (6 AM – 2 PM)',
+      'Afternoon (2 PM – 10 PM)',
+      'Overnight (10 PM – 6 AM)',
+      'Flexible / Open'
+    ],
+    'Highest Education Level': [
+      'High School Diploma / GED',
+      'Some College',
+      "Associate's Degree",
+      "Bachelor's Degree",
+      'Graduate Degree'
+    ],
+    'Years of Caregiving / Healthcare Experience': [
+      'Less than 1 year',
+      '1–2 years',
+      '3–5 years',
+      '5–10 years',
+      '10+ years'
+    ],
+    'Certifications Held': [
+      'STNA (Ohio)',
+      'CPR / First Aid',
+      'CNA',
+      'Home Health Aide (HHA)',
+      "Alzheimer's / Dementia Care",
+      'Other'
+    ],
+    "Valid Driver's License?": ['Yes', 'No'],
+    'Reliable Transportation?': ['Yes', 'No'],
+    'Legally authorized to work in the US?': ['Yes', 'No'],
+    'Have you ever been convicted of a felony or misdemeanor?': ['Yes', 'No']
+  }
+};
+const multiValueEnumFields = new Set([
+  'Services Needed',
+  'Available Days',
+  'Available Shifts',
+  'Certifications Held'
+]);
+const dateFieldRules = {
+  "Client's Date of Birth": 'past-or-today',
+  'Desired Care Start Date': 'future-or-today',
+  'Date of Birth': 'past-or-today',
+  'Earliest Available Start Date': 'future-or-today',
+  'STNA License Expiration Date': 'future-or-today'
+};
 
 const formTitles = {
   'newsletter-form': 'Newsletter Signup',
@@ -263,6 +406,7 @@ async function buildSubmissionPayload(form, formId) {
 function validateSubmissionPayload(formId, fields, fileUpload) {
   const fieldAliases = fieldAliasesByForm[formId] || {};
   const fieldMap = Object.fromEntries(fields.map((field) => [fieldAliases[field.label] || field.label, field.value]));
+  const enumFields = enumFieldsByForm[formId] || {};
 
   (requiredFieldsByForm[formId] || []).forEach((label) => {
     if (!String(fieldMap[label] || '').trim()) {
@@ -281,6 +425,33 @@ function validateSubmissionPayload(formId, fields, fileUpload) {
     const value = fieldMap[label];
     if (value && !isValidPhone(value)) {
       throw new Error(`Please enter a valid phone number for "${label}".`);
+    }
+  });
+
+  Object.entries(enumFields).forEach(([label, allowedValues]) => {
+    const value = fieldMap[label];
+    if (!value) {
+      return;
+    }
+
+    const submittedValues = multiValueEnumFields.has(label)
+      ? String(value).split(',').map((entry) => entry.trim()).filter(Boolean)
+      : [String(value).trim()];
+
+    const hasInvalidValue = submittedValues.some((submittedValue) => !allowedValues.includes(submittedValue));
+    if (hasInvalidValue) {
+      throw new Error(`Please choose a valid option for "${label}".`);
+    }
+  });
+
+  Object.entries(dateFieldRules).forEach(([label, rule]) => {
+    const value = fieldMap[label];
+    if (!value) {
+      return;
+    }
+
+    if (!isValidDateValue(value, rule)) {
+      throw new Error(`Please enter a valid date for "${label}".`);
     }
   });
 
@@ -306,6 +477,35 @@ function isValidEmail(value) {
 function isValidPhone(value) {
   const digits = String(value).replace(/\D/g, '');
   return digits.length >= 7 && digits.length <= 15;
+}
+
+function isValidDateValue(value, rule) {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(String(value).trim())) {
+    return false;
+  }
+
+  const date = new Date(`${value}T00:00:00`);
+  if (Number.isNaN(date.getTime())) {
+    return false;
+  }
+
+  const normalized = date.toISOString().slice(0, 10);
+  if (normalized !== value) {
+    return false;
+  }
+
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  if (rule === 'past-or-today') {
+    return date <= today;
+  }
+
+  if (rule === 'future-or-today') {
+    return date >= today;
+  }
+
+  return true;
 }
 
 function initFormProtection() {
