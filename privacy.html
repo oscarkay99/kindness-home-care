@@ -33,8 +33,11 @@
 <header id="site-header" class="fixed top-0 left-0 right-0 z-50 bg-transparent">
   <div class="w-full px-6 md:px-10 lg:px-14">
     <div class="flex items-center justify-between h-20">
-      <a href="index.html" class="flex items-center group">
-        <img src="assets/logo.png" alt="Kindness Home Care Services LLC" class="h-12 w-auto">
+      <a href="index.html" class="flex items-center gap-3 group">
+        <div class="logo-container">
+          <img src="assets/logo.png" alt="Kindness Home Care Services LLC" class="h-14 w-14 object-contain">
+        </div>
+        <span class="font-heading text-base font-bold text-background-50 tracking-wide leading-tight hidden sm:block">Kindness Home Care</span>
       </a>
       <nav class="hidden lg:flex items-center gap-1">
         <a href="index.html"    class="nav-link px-4 py-2 text-sm font-medium rounded-full text-background-50/90 hover:bg-background-50/10">Home</a>
@@ -47,7 +50,7 @@
       <div class="hidden lg:flex items-center gap-3">
         <a href="apply.html" class="px-5 py-2.5 rounded-full bg-primary-500 hover:bg-primary-600 text-white text-sm font-semibold transition-colors">Request Care</a>
       </div>
-      <button id="menu-toggle" aria-expanded="false" class="lg:hidden w-10 h-10 flex items-center justify-center rounded-full text-background-50 hover:bg-background-50/10 transition-colors">
+      <button id="menu-toggle" aria-expanded="false" class="lg:hidden w-10 h-10 flex items-center justify-center rounded-full transition-colors">
         <i class="fa-solid fa-bars text-lg"></i>
       </button>
     </div>
@@ -70,9 +73,9 @@
   <div class="absolute inset-0 bg-gradient-to-b from-black/10 to-black/65"></div>
   <div class="relative z-10 w-full px-6 md:px-10 lg:px-14 pb-12 pt-32">
     <div class="max-w-4xl">
-      <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-background-50/15 border border-background-50/25 text-background-50 text-[11px] font-semibold uppercase tracking-[0.18em]">Legal</span>
+      <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-background-50/15 border border-background-50/25 text-background-50 text-[13px] font-semibold uppercase tracking-[0.18em]">Legal</span>
       <h1 class="mt-5 font-heading text-4xl md:text-5xl font-light text-background-50 leading-tight">Privacy Policy</h1>
-      <p class="mt-3 text-background-100 text-sm">Last updated: June 1, 2026</p>
+      <p class="mt-3 text-background-100 text-sm">Last updated: June 4, 2026</p>
     </div>
   </div>
 </section>
@@ -88,13 +91,15 @@
         <nav class="flex flex-col gap-2">
           <a href="#overview"     class="text-sm text-foreground-700 hover:text-primary-700">Overview</a>
           <a href="#collection"   class="text-sm text-foreground-700 hover:text-primary-700">Information We Collect</a>
+          <a href="#legal-basis"  class="text-sm text-foreground-700 hover:text-primary-700">Legal Basis (GDPR)</a>
           <a href="#use"          class="text-sm text-foreground-700 hover:text-primary-700">How We Use It</a>
           <a href="#sharing"      class="text-sm text-foreground-700 hover:text-primary-700">Sharing Information</a>
+          <a href="#third-party"  class="text-sm text-foreground-700 hover:text-primary-700">Third-Party Services</a>
           <a href="#health"       class="text-sm text-foreground-700 hover:text-primary-700">Health Information</a>
           <a href="#security"     class="text-sm text-foreground-700 hover:text-primary-700">Data Security</a>
           <a href="#retention"    class="text-sm text-foreground-700 hover:text-primary-700">Data Retention</a>
           <a href="#rights"       class="text-sm text-foreground-700 hover:text-primary-700">Your Rights</a>
-          <a href="#cookies"      class="text-sm text-foreground-700 hover:text-primary-700">Cookies</a>
+          <a href="#cookies"      class="text-sm text-foreground-700 hover:text-primary-700">Cookies &amp; Consent</a>
           <a href="#children"     class="text-sm text-foreground-700 hover:text-primary-700">Children's Privacy</a>
           <a href="#changes"      class="text-sm text-foreground-700 hover:text-primary-700">Changes to Policy</a>
           <a href="#contact-us"   class="text-sm text-foreground-700 hover:text-primary-700">Contact Us</a>
@@ -113,6 +118,9 @@
         <p>
           By using our website or engaging our services, you agree to the practices described in this policy. If you have questions or concerns, please contact us using the information at the end of this document.
         </p>
+        <p>
+          This policy applies to information submitted through our contact form, care request form, job application form, newsletter sign-up forms, email, phone calls, and any follow-up communication related to those requests.
+        </p>
       </div>
 
       <div id="collection" class="scroll-mt-28">
@@ -121,20 +129,38 @@
 
         <h3>Information You Provide Directly</h3>
         <ul>
-          <li>Contact information: name, phone number, email address, mailing address</li>
-          <li>Care request details: information about the person needing care, their medical conditions, and care preferences</li>
-          <li>Employment application information: work history, certifications, references, background check consent</li>
-          <li>Payment and billing information</li>
-          <li>Communications you send us via forms, email, or phone</li>
+          <li>Contact information such as name, phone number, email address, and mailing address</li>
+          <li>Care request details such as the client's name, living situation, requested services, preferred start date, care preferences, and any health-related details you choose to include</li>
+          <li>Employment application information such as work history, certifications, references, background-check consent, and resume uploads</li>
+          <li>Newsletter subscription details, usually your email address only</li>
+          <li>Payment and billing information when you contact us about private-pay services</li>
+          <li>Communications you send us by website form, email, phone, or follow-up messages</li>
         </ul>
 
         <h3>Information Collected Automatically</h3>
         <ul>
-          <li>Browser type, device type, and operating system</li>
-          <li>IP address and approximate geographic location</li>
-          <li>Pages viewed on our website and time spent</li>
-          <li>Referring URLs (how you found our site)</li>
+          <li>Limited technical request information processed by the third-party services used to load fonts, icons, and form infrastructure</li>
+          <li>Basic browser and device information that may be logged by those providers for security and delivery purposes</li>
         </ul>
+        <p>
+          We do not use advertising trackers, social media pixels, or analytics dashboards on this website at this time.
+        </p>
+      </div>
+
+      <div id="legal-basis" class="scroll-mt-28">
+        <h2>Legal Basis for Processing (GDPR)</h2>
+        <p>
+          Where the General Data Protection Regulation (GDPR) or similar data protection laws apply, we process your personal data on the following legal bases:
+        </p>
+        <ul>
+          <li><strong>Consent (Article 6(1)(a)):</strong> When you tick the consent checkbox on our forms, subscribe to our newsletter, or accept cookies, you give us explicit consent to process your data for the stated purpose. You may withdraw consent at any time by contacting us — withdrawal does not affect the lawfulness of processing before the withdrawal.</li>
+          <li><strong>Contractual necessity (Article 6(1)(b)):</strong> When you request care services or enter into a service agreement with us, we process your data as necessary to perform that contract.</li>
+          <li><strong>Legal obligation (Article 6(1)(c)):</strong> We may process data where required to comply with applicable law, such as Ohio state regulations governing home care agencies.</li>
+          <li><strong>Legitimate interests (Article 6(1)(f)):</strong> We may process data for our legitimate business interests, such as preventing fraud and maintaining the security of our systems, provided those interests are not overridden by your rights.</li>
+        </ul>
+        <p>
+          The data controller for this website is: <strong>Kindness Home Care Services LLC</strong>, 133 Cameo Woods Drive, Delaware, Ohio 43015, USA.
+        </p>
       </div>
 
       <div id="use" class="scroll-mt-28">
@@ -163,10 +189,23 @@
         <ul>
           <li><strong>Caregivers assigned to your case:</strong> We share relevant care-related information with the caregiver(s) assigned to a client to enable them to provide appropriate care.</li>
           <li><strong>Healthcare providers:</strong> With your consent, we may share relevant health information with physicians or other providers involved in the client's care.</li>
-          <li><strong>Service providers:</strong> We use trusted third-party vendors for functions such as email delivery, background check processing, and payment processing. These vendors are contractually bound to protect your information and may not use it for their own purposes.</li>
+          <li><strong>Service providers:</strong> We use trusted third-party vendors for functions such as Google Workspace tools, email delivery, resume storage, background check processing, and payment processing. These vendors may process data on our behalf and may not use it for their own independent marketing purposes.</li>
           <li><strong>Legal compliance:</strong> We may disclose information when required by law, court order, or to protect the rights, safety, or property of the Company, clients, or the public.</li>
           <li><strong>Business transfers:</strong> In the event of a merger, acquisition, or sale of assets, client information may be transferred, subject to the same privacy protections described here.</li>
         </ul>
+      </div>
+
+      <div id="third-party" class="scroll-mt-28">
+        <h2>Third-Party Services</h2>
+        <p>This website uses the following third-party services that may process your data:</p>
+        <ul>
+          <li><strong>Google Fonts:</strong> We load fonts from Google's CDN (<code>fonts.googleapis.com</code>). When your browser requests these fonts, Google may log your IP address. See <a href="https://policies.google.com/privacy" class="text-primary-700 underline" target="_blank" rel="noopener">Google's Privacy Policy</a>.</li>
+          <li><strong>Font Awesome (Cloudflare CDN):</strong> We load icons from <code>cdnjs.cloudflare.com</code>. Cloudflare may log request metadata. See <a href="https://www.cloudflare.com/privacypolicy/" class="text-primary-700 underline" target="_blank" rel="noopener">Cloudflare's Privacy Policy</a>.</li>
+          <li><strong>Google Apps Script, Google Sheets, and Google Drive (form submissions):</strong> Form data you submit through our contact, care request, job application, and newsletter forms is transmitted through a Google Apps Script endpoint and stored in Google Sheets. Resume uploads submitted through the job application form may also be stored in Google Drive. These services are provided through Google Workspace and are subject to <a href="https://policies.google.com/privacy" class="text-primary-700 underline" target="_blank" rel="noopener">Google's Privacy Policy</a>.</li>
+        </ul>
+        <p>
+          We use these services to receive and organize submissions, contact you about your request or application, and keep intake records for business operations. Access is limited to authorized members of Kindness Home Care Services LLC and trusted service providers who need that access to perform their role.
+        </p>
       </div>
 
       <div id="health" class="scroll-mt-28">
@@ -178,7 +217,7 @@
           While we are a private-pay home care agency and not a covered entity under HIPAA in all circumstances, we apply HIPAA-aligned best practices to the handling of any health-related information we receive. Caregivers are trained in client confidentiality and are prohibited from sharing client health information with unauthorized parties.
         </p>
         <p>
-          Health information is used solely for care planning and coordination purposes and is shared only as described in the Sharing section above.
+          Health information is used solely for care planning, matching, scheduling, and coordination purposes and is shared only as described in the Sharing section above. We encourage visitors not to submit more medical detail through the website forms than is reasonably necessary for an initial intake conversation.
         </p>
       </div>
 
@@ -188,10 +227,11 @@
           We implement appropriate technical and organizational measures to protect your information against unauthorized access, disclosure, alteration, or destruction. These measures include:
         </p>
         <ul>
-          <li>Encrypted storage of sensitive digital records</li>
           <li>Restricted access to personal data on a need-to-know basis</li>
+          <li>Password-protected Google Workspace tools used for intake and record handling</li>
+          <li>Role-based internal access to care requests, contact inquiries, and job applications</li>
           <li>Secure handling of physical documents containing personal information</li>
-          <li>Regular review of our security practices</li>
+          <li>Regular review of our operational and security practices</li>
         </ul>
         <p>
           No method of transmission over the internet or electronic storage is completely secure. While we strive to use commercially reasonable means to protect your information, we cannot guarantee absolute security.
@@ -201,8 +241,14 @@
       <div id="retention" class="scroll-mt-28">
         <h2>Data Retention</h2>
         <p>
-          We retain personal information for as long as necessary to fulfill the purposes outlined in this policy and to comply with legal, regulatory, and business obligations. Care-related records are retained in accordance with Ohio state law requirements for home care agencies. Job applicant records for unsuccessful candidates are retained for a maximum of two years unless otherwise required by law.
+          We retain personal information for as long as necessary to fulfill the purposes outlined in this policy and to comply with legal, regulatory, and business obligations.
         </p>
+        <ul>
+          <li><strong>Contact inquiries and newsletter requests:</strong> typically retained for customer service follow-up, relationship management, and recordkeeping unless you request deletion and we are not required to keep the record.</li>
+          <li><strong>Care request and service-related records:</strong> retained as needed for intake, care coordination, business records, and any applicable legal or regulatory obligations.</li>
+          <li><strong>Job application records:</strong> retained for recruiting, hiring decisions, compliance, and recordkeeping for a reasonable period unless a longer retention period is required by law.</li>
+          <li><strong>Resume uploads:</strong> retained only as long as needed for recruiting and employment review purposes unless required for compliance or dispute-resolution reasons.</li>
+        </ul>
         <p>
           When data is no longer needed, we securely delete or anonymize it.
         </p>
@@ -217,19 +263,24 @@
           <li><strong>Deletion:</strong> You may request that we delete your information, subject to our legal and operational obligations.</li>
           <li><strong>Opt-out of marketing:</strong> You may unsubscribe from our newsletter at any time by clicking the unsubscribe link or contacting us directly.</li>
           <li><strong>Portability:</strong> Where applicable, you may request a copy of your data in a structured, machine-readable format.</li>
+          <li><strong>Withdraw consent:</strong> Where processing is based on your consent, you may withdraw it at any time. Withdrawal does not affect the lawfulness of any processing carried out before the withdrawal.</li>
+          <li><strong>Lodge a complaint:</strong> If you believe your data rights have been violated, you have the right to lodge a complaint with the relevant supervisory authority in your country of residence.</li>
         </ul>
         <p>
-          To exercise any of these rights, please contact us at <a href="mailto:care@kindnesshomecare.com" class="text-primary-700 underline">care@kindnesshomecare.com</a> or by phone at (614) 555-0199.
+          To exercise any of these rights, including requesting deletion of information you submitted through our website forms, please contact us at <a href="mailto:kindnesshomecareservices@gmail.com" class="text-primary-700 underline">kindnesshomecareservices@gmail.com</a> or by phone at (614) 270-5166. We may need to verify your identity before fulfilling certain requests.
         </p>
       </div>
 
       <div id="cookies" class="scroll-mt-28">
-        <h2>Cookies and Tracking</h2>
+        <h2>Cookies &amp; Consent</h2>
         <p>
-          Our website may use cookies and similar technologies to improve your browsing experience, remember preferences, and analyze how our site is used. You may configure your browser to refuse cookies, though some features of the site may not function properly without them.
+          When you first visit this website, a cookie consent banner will appear at the bottom of the screen. You may choose to <strong>Accept All</strong> (which permits third-party font and icon services to load) or <strong>Essential Only</strong> (which still allows the site to function but may affect how fonts and icons appear). Your choice is stored in your browser's local storage and remembered for future visits.
         </p>
         <p>
-          We do not sell cookie or tracking data to third parties, and we do not use advertising networks that track you across other websites.
+          You may withdraw or change your cookie preference at any time by clearing your browser's local storage or by contacting us. We do not use advertising cookies, tracking pixels, or analytics services.
+        </p>
+        <p>
+          For more detail on the third-party services that may set cookies, see the <a href="#third-party" class="text-primary-700 underline">Third-Party Services</a> section above.
         </p>
       </div>
 
@@ -255,10 +306,10 @@
         <div class="mt-4 p-5 rounded-xl bg-background-100 border border-background-200">
           <p class="font-semibold text-foreground-950">Kindness Home Care Services LLC</p>
           <p class="text-sm text-foreground-700 mt-2 leading-relaxed">
-            1248 Compassion Lane, Suite 200<br>
-            Columbus, OH 43215<br><br>
-            Phone: <a href="tel:+16145550199" class="text-primary-700">(614) 555-0199</a><br>
-            Email: <a href="mailto:care@kindnesshomecare.com" class="text-primary-700">care@kindnesshomecare.com</a>
+            133 Cameo Woods Drive<br>
+            Delaware, Ohio 43015<br><br>
+            Phone: <a href="tel:+16142705166" class="text-primary-700">(614) 270-5166</a><br>
+            Email: <a href="mailto:kindnesshomecareservices@gmail.com" class="text-primary-700">kindnesshomecareservices@gmail.com</a>
           </p>
         </div>
       </div>
@@ -272,7 +323,7 @@
   <div class="rounded-3xl bg-secondary-950 text-background-50 px-6 md:px-12 lg:px-16 py-10">
     <div class="flex flex-col md:flex-row items-center justify-between gap-6">
       <div class="flex items-center gap-3">
-        <img src="assets/logo.png" alt="Kindness Home Care Services LLC" class="h-10 w-auto">
+        <img src="assets/logo.png" alt="Kindness Home Care Services LLC" class="h-12 w-auto">
       </div>
       <p class="text-xs text-background-400 text-center">© 2026 Kindness Home Care Services LLC. All rights reserved.</p>
       <div class="flex items-center gap-4 text-xs">
@@ -285,6 +336,22 @@
   </div>
 </footer>
 
+
+<!-- COOKIE CONSENT BANNER -->
+<div id="cookie-banner" class="fixed bottom-0 left-0 right-0 z-[100] p-4 md:p-6 hidden cookie-banner-slide">
+  <div class="max-w-3xl mx-auto bg-background-950 text-background-50 rounded-2xl px-6 py-5 flex flex-col sm:flex-row items-start sm:items-center gap-4 shadow-2xl border border-background-800">
+    <div class="flex-1 min-w-0">
+      <p class="text-sm font-semibold text-background-50 mb-1"><i class="fa-solid fa-shield-halved text-primary-400 mr-2"></i>Cookie &amp; Privacy Notice</p>
+      <p class="text-xs text-background-300 leading-relaxed">This site loads fonts from Google and icons from Font Awesome, which may set cookies or log your IP address. By clicking <strong>Accept</strong> you consent to these services. <a href="privacy.html" class="underline hover:text-background-50">Privacy Policy</a></p>
+    </div>
+    <div class="flex gap-3 shrink-0">
+      <button id="cookie-decline" class="px-5 py-2.5 rounded-full border border-background-700 text-background-300 text-xs font-semibold hover:border-background-500 hover:text-background-50 transition-colors whitespace-nowrap">Essential Only</button>
+      <button id="cookie-accept" class="px-5 py-2.5 rounded-full bg-primary-500 hover:bg-primary-600 text-white text-xs font-semibold transition-colors whitespace-nowrap">Accept All</button>
+    </div>
+  </div>
+</div>
+
+<script src="assets/js/forms-config.js"></script>
 <script src="assets/js/main.js"></script>
 </body>
 </html>
